@@ -3,6 +3,8 @@ services:
     build:
       context: .
       target: development
+    volumes:
+      - .:/vcnsea
     ports:
       - 3000:3000
     entrypoint:

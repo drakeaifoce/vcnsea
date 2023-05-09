@@ -1,4 +1,2 @@
-FROM docker/dev-environments-javascript:stable-1 as development
+FROM node:18 as development
 WORKDIR /vcnsea
-COPY . .
-RUN npm install
