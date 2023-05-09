@@ -19,10 +19,12 @@ export const Button = forwardRef(
           {
             "bg-sage-3 border-sage-7 text-sage-11 hover:bg-sage-4":
               variant === "tertiary",
-          },{
+          },
+          {
             "bg-red-9 border-red-7 text-white hover:bg-red-10":
               variant === "danger",
           },
+          className
         )}
         {...props}
       >
