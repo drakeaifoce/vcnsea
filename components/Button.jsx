@@ -7,7 +7,7 @@ export const Button = forwardRef(
       <button
         ref={ref}
         className={clsx(
-          "px-4 py-2 text-base font-medium rounded-md border border-solid",
+          "px-4 py-2 text-base font-medium whitespace-nowrap rounded-md border border-solid",
           {
             "bg-teal-9 border-teal-7 text-white hover:bg-teal-10":
               variant === "primary",
