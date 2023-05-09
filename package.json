@@ -13,8 +13,7 @@
     "@prisma/client": "^4.13.0",
     "next": "13.4.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "reshaped": "file:.vendor/reshaped-react-v2.0.0-nightly.1.tgz"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "autoprefixer": "10.4.14",
