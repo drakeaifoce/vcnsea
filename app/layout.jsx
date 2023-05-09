@@ -14,7 +14,8 @@ export default function Layout({ children }) {
                 Войти
               </Button>
               <Button variant="primary" type="button">
-                Начать пользоваться
+                Начать{" "}
+                <span className="hidden md:inline-block">пользоваться</span>
               </Button>
             </div>
           </nav>
