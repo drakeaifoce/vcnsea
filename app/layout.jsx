@@ -2,6 +2,11 @@ import "./tailwind.css";
 import Image from "next/image";
 import { Button } from "../components/Button";
 
+export const metadata = {
+  title: "vcnsea",
+  description: "Web-application for students to find vacancies",
+}
+
 export default function Layout({ children }) {
   return (
     <html lang="en">
