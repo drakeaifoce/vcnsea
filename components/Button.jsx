@@ -24,6 +24,10 @@ export const Button = forwardRef(
             "bg-red-9 border-red-7 text-white hover:bg-red-10":
               variant === "danger",
           },
+          {
+            "bg-transparent border-0 text-sage-11 hover:bg-sage-4":
+              variant === "transparent",
+          },
           className
         )}
         {...props}
