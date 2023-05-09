@@ -2,6 +2,11 @@ import Image from "next/image";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 
+export const metadata = {
+  title: "vcnsea",
+  description: "Web-application for students to find vacancies",
+}
+
 export default async function Index() {
   return (
     <div className="container mx-auto px-4">
