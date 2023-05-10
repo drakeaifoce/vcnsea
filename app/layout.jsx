@@ -1,5 +1,6 @@
 import "./tailwind.css";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../components/Button";
 
 export const metadata = {
@@ -13,7 +14,14 @@ export default function Layout({ children }) {
       <body>
         <header>
           <nav className="container mx-auto flex flex-row justify-between items-center px-4 pb-14 pt-10">
-            <Image src="/vcnsea.svg" alt="vcnsea icon" width={84} height={13} />
+            <Link href="/">
+              <Image
+                src="/vcnsea.svg"
+                alt="vcnsea icon"
+                width={84}
+                height={14}
+              />
+            </Link>
             <div className="flex flex-row gap-4">
               <Button variant="transparent" type="button">
                 <span className="md:hidden">Опубликовать</span>
