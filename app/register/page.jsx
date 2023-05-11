@@ -7,17 +7,17 @@ export default function Register() {
   const registerAction = async (data) => {
     "use server";
     console.log(data);
-    // const user = await prisma.user.create({
-    //   data: {
-    //     email: data.get("email"),
-    //     firstName: data.get("firstName"),
-    //     secondName: data.get("secondName"),
-    //     Role: data.get("role"),
-    //     password: await bcrypt.hash(data.get("password"), 10),
-    //   },
-    // // });
-    // const { password, ...result } = user;
-    // return result;
+    const user = await prisma.user.create({
+      data: {
+        email: data.get("email"),
+        firstName: data.get("firstName"),
+        secondName: data.get("secondName"),
+        Role: data.get("role"),
+        password: await bcrypt.hash(data.get("password"), 10),
+      },
+    });
+    const { password, ...result } = user;
+    return result;
   };
 
   return (
@@ -55,7 +55,7 @@ export default function Register() {
           />
           <Input
             id="firstName"
-            name="firstNamen"
+            name="firstName"
             placeholder="Введите ваше имя"
             type="text"
             className="w-full"

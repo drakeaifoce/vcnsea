@@ -22,18 +22,16 @@ const handler = NextAuth({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
+            username: credentials.username,
+            password: credentials.password,
           }),
         });
 
         const user = await res.json();
 
-        if (user) {
-          // Any object returned will be saved in `user` property of the JWT
+        if (res.ok && user) {
           return user;
         }
-        // If you return null then an error will be displayed advising the user to check their details.
         return null;
 
         // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
@@ -49,6 +47,9 @@ const handler = NextAuth({
       session.user = token;
       return session;
     },
+  },
+  pages: {
+    signIn: "/login",
   },
 });
 

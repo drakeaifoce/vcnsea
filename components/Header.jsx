@@ -6,6 +6,7 @@ import { Button } from "./Button";
 
 export const Header = () => {
   const { data: session } = useSession();
+  console.log(session);
   return (
     <nav className="container mx-auto flex flex-row items-center justify-between px-4 pb-14 pt-10">
       <Link href="/">
@@ -19,7 +20,7 @@ export const Header = () => {
                 </span>
               </Button> */}
         {session && session.user ? (
-          session.user.email
+          session.user.firstName + " " + session.user.secondName
         ) : (
           <>
             <Button variant="tertiary" type="button" onClick={() => signIn()}>

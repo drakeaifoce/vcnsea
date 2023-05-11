@@ -1,13 +1,17 @@
+"use client";
 import { signIn } from "next-auth/react";
+import { useRef } from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
 export default function Login() {
-  const loginAction = async (data) => {
-    "use server";
+  const emailField = useRef("");
+  const passwordField = useRef("");
+
+  const onSubmit = async () => {
     const result = await signIn("credentials", {
-      username: data.get("email"),
-      password: data.get("password"),
+      username: emailField.current,
+      password: passwordField.current,
       redirect: true,
       callbackUrl: "/",
     });
@@ -16,10 +20,7 @@ export default function Login() {
   return (
     <div className="container mx-auto">
       <div className="mt-20 lg:px-96">
-        <form
-          className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20"
-          action={loginAction}
-        >
+        <form className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20">
           <label htmlFor="email" className="sr-only">
             For email
           </label>
@@ -30,6 +31,7 @@ export default function Login() {
             type="email"
             className="w-full"
             required
+            onChange={(e) => (emailField.current = e.target.value)}
           />
 
           <label htmlFor="password" className="sr-only">
@@ -42,8 +44,9 @@ export default function Login() {
             type="password"
             className="w-full"
             required
+            onChange={(e) => (passwordField.current = e.target.value)}
           />
-          <Button variant="secondary" type="submit">
+          <Button variant="secondary" type="button" onClick={onSubmit}>
             Войти
           </Button>
         </form>
