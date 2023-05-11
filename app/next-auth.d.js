@@ -1,7 +1,5 @@
 const User = {
   name: String,
-  role: String,
-  userName: String,
   accessToken: String,
 };
 

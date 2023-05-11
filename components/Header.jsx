@@ -7,7 +7,7 @@ import { Button } from "./Button";
 export const Header = () => {
   const { data: session } = useSession();
   return (
-    <nav className="container mx-auto flex flex-row items-center justify-between px-4 pb-14 pt-10">
+    <nav className="container mx-auto flex flex-row items-center justify-between p-5 px-4">
       <Link href="/">
         <Image src="/vcnsea.svg" alt="vcnsea icon" width={84} height={14} />
       </Link>
