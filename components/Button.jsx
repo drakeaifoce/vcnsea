@@ -28,12 +28,12 @@ export const Button = forwardRef(
             "border-0 bg-transparent text-sage-11 hover:bg-sage-4":
               variant === "transparent",
           },
-          className,
+          className
         )}
         {...props}
       >
         {children}
       </button>
     );
-  },
+  }
 );
