@@ -1,17 +1,38 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  name      String
-  email     String   @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+model Vacancy {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  title         String
+  floorSalary   Int
+  ceilingSalary Int?
+  companyName   String
+  city          String
+  logo          String?
+  Tag           Tag[]
+}
+
+model Tag {
+  id             Int      @id @default(autoincrement())
+  name           String
+  associatedWith String
+  vacancyId      Int?
+  Vacancy        Vacancy? @relation(fields: [vacancyId], references: [id])
 }
