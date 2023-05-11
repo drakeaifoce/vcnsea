@@ -1,12 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { Button } from "./Button";
 
 export const Header = () => {
   const { data: session } = useSession();
-  console.log(session);
   return (
     <nav className="container mx-auto flex flex-row items-center justify-between px-4 pb-14 pt-10">
       <Link href="/">
@@ -19,12 +18,21 @@ export const Header = () => {
                   Добавить вакансию
                 </span>
               </Button> */}
-        <Button variant="tertiary" type="button" onClick={() => signIn()}>
-          Войти
-        </Button>
-        <Button variant="primary" type="button">
-          Начать <span className="hidden md:inline-block">пользоваться</span>
-        </Button>
+        {session && session.user ? (
+          session.user.email
+        ) : (
+          <>
+            <Button variant="tertiary" type="button" onClick={() => signIn()}>
+              Войти
+            </Button>
+            <Link href="/register">
+              <Button variant="primary" type="button">
+                Начать{" "}
+                <span className="hidden md:inline-block">пользоваться</span>
+              </Button>
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
