@@ -3,17 +3,16 @@ import { withAuth } from "next-auth/middleware";
 
 export default withAuth(
   (req) => {
-    console.log(req);
     if (
       req.nextUrl.pathname.startsWith("/company") &&
-      req.nextauth.token?.role !== "COMPANY"
+      req.nextauth.token?.Role !== "COMPANY"
     )
       return NextResponse.rewrite(
         new URL("/auth/login?message=You Are Not Authorized!", req.url),
       );
     if (
       req.nextUrl.pathname.startsWith("/profile") &&
-      req.nextauth.token?.role !== "USER"
+      req.nextauth.token?.Role !== "USER"
     )
       return NextResponse.rewrite(
         new URL("/auth/login?message=You Are Not Authorized!", req.url),
