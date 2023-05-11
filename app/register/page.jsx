@@ -6,7 +6,6 @@ import prisma from "../prisma";
 export default function Register() {
   const registerAction = async (data) => {
     "use server";
-    console.log(data);
     const user = await prisma.user.create({
       data: {
         email: data.get("email"),
