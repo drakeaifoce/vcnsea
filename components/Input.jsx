@@ -10,11 +10,11 @@ export const Input = forwardRef(
         name={name}
         placeholder={placeholder}
         className={clsx(
-          "px-4 py-2 font-normal text-base text-sage-12 bg-sage-3 rounded-md hover:bg-sage-4 focus:bg-sage-5 focus:text-black outline-none",
-          className
+          "rounded-md border-transparent bg-sage-3 px-4 py-2 text-base font-normal text-sage-12 outline-none hover:bg-sage-4 focus:border-transparent focus:bg-sage-5 focus:text-black focus:ring-0",
+          className,
         )}
         {...props}
       />
     );
-  }
+  },
 );
