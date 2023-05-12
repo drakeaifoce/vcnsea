@@ -23,7 +23,7 @@ model Student {
   quote           String?
   about           String?
   workExperiences WorkExperience[]
-  Responses       Response[]
+  Responses       Application[]
   CV              CV?
 }
 
@@ -55,15 +55,15 @@ model Company {
 }
 
 model Vacancy {
-  id            Int        @id @default(autoincrement())
+  id            Int           @id @default(autoincrement())
   floorSalary   Int
   ceilingSalary Int
   title         String
   description   String
   location      String
-  company       Company?   @relation(fields: [companyId], references: [id])
+  company       Company?      @relation(fields: [companyId], references: [id])
   companyId     Int
-  Responses     Response[]
+  Applications  Application[]
   Tags          Tag[]
 }
 
@@ -81,11 +81,11 @@ model CV {
   studentId    Int     @unique
 }
 
-model Response {
+model Application {
   id        Int      @id @default(autoincrement())
   status    String
-  Student   Student? @relation(fields: [StudentId], references: [id])
-  StudentId Int?
-  vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
-  vacancyId Int?
+  Student   Student? @relation(fields: [studentId], references: [id])
+  studentId Int
+  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
+  vacancyId Int
 }

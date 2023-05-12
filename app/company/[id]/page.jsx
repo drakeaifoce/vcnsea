@@ -8,6 +8,15 @@ export default async function CompanyAccount({ params }) {
     where: {
       id: Number(params.id),
     },
+    include: {
+      Vacancies: {
+        select: {
+          id: true,
+          title: true,
+          location: true,
+        },
+      },
+    },
   });
 
   return (
@@ -31,9 +40,14 @@ export default async function CompanyAccount({ params }) {
               </h2>
             </div>
           </div>
-          <Link href={`/company${params.id}/create-vacancy`}>
-            <Button variant="primary">Создать вакансию</Button>
-          </Link>
+          <div className="flex flex-row gap-4">
+            <Link href={`/company/${params.id}/create-vacancy`}>
+              <Button variant="primary">Создать вакансию</Button>
+            </Link>
+            <Link href={`/company/${params.id}/manage-vacancies`}>
+              <Button variant="secondary">Управлять вакансиями</Button>
+            </Link>
+          </div>
         </div>
         <section className="grid grid-cols-3 ">
           <h6 className="cols-span-1 text-sm font-normal text-sage-10">
@@ -51,12 +65,20 @@ export default async function CompanyAccount({ params }) {
             {company.description}
           </p>
         </section>
+        <section className="grid grid-cols-3 ">
+          <h6 className="cols-span-1 text-sm font-normal text-sage-10">
+            Контакты
+          </h6>
+          <p className="cols-span-2 text-sm font-normal text-sage-12">
+            {company.email}
+          </p>
+        </section>
         <secion className="flex flex-col gap-4">
           <h5 className="text-base font-medium text-sage-12">
             Доступные вакансии
           </h5>
-          <table className="w-full text-left text-sm text-sage-10">
-            <thead className=" bg-sage-6 text-xs uppercase text-sage-12">
+          <table className="w-full table-auto text-left text-sm text-sage-10">
+            <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Позиция
@@ -64,8 +86,35 @@ export default async function CompanyAccount({ params }) {
                 <th scope="col" className="px-6 py-3">
                   Локация
                 </th>
+                <th scope="col" className="px-6 py-3 text-left">
+                  Опубликована
+                </th>
               </tr>
             </thead>
+            <tbody>
+              {company.Vacancies.map((vacancy) => {
+                return (
+                  <tr
+                    key={vacancy.id}
+                    className="border-b border-sage-6 bg-sage-2"
+                  >
+                    <th
+                      scope="row"
+                      className="text- whitespace-nowrap px-6 py-4 font-medium text-sage-12"
+                    >
+                      <Link
+                        href={`/vacancy/${vacancy.id}`}
+                        className="hover:underline"
+                      >
+                        {vacancy.title}
+                      </Link>
+                    </th>
+                    <td className="px-6 py-4">{vacancy.location}</td>
+                    <td className="px-6 py-4">Вчера</td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </secion>
       </div>

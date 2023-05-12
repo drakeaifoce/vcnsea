@@ -1,4 +1,5 @@
 const User = {
+  id: Number,
   name: String,
   accessToken: String,
 };

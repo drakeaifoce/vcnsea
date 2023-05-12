@@ -4,12 +4,12 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
-import prisma from "../../prisma";
+import { prisma } from "../../prisma";
 
 export default function RegisterUser() {
   const registerUserAction = async (data) => {
     "use server";
-    const company = await prisma.student.create({
+    const student = await prisma.student.create({
       data: {
         email: data.get("email"),
         firstName: data.get("firstName"),

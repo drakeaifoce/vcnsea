@@ -2,9 +2,10 @@ import clsx from "clsx";
 import { forwardRef } from "react";
 
 export const Button = forwardRef(
-  ({ children, className, variant, ...props }, ref) => {
+  ({ children, className, onClick, variant, ...props }, ref) => {
     return (
       <button
+        onClick={onClick}
         ref={ref}
         className={clsx(
           "whitespace-nowrap rounded-md border border-solid px-4 py-2 text-base font-medium",
@@ -28,12 +29,12 @@ export const Button = forwardRef(
             "border-0 bg-transparent text-sage-11 hover:bg-sage-4":
               variant === "transparent",
           },
-          className
+          className,
         )}
         {...props}
       >
         {children}
       </button>
     );
-  }
+  },
 );

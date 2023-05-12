@@ -11,8 +11,6 @@ export default async function Index() {
     },
   });
 
-  console.log(vacancies);
-
   return (
     <div className="container mx-auto px-4">
       <section className="mb-8 flex flex-row">
