@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { forwardRef } from "react";
 
 export const Input = forwardRef(
-  ({ className, variant, name, id, placeholder, label, ...props }, ref) => {
+  ({ className, name, id, placeholder, label, ...props }, ref) => {
     return (
       <>
         {label ? (
