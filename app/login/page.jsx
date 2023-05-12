@@ -9,7 +9,6 @@ export default function Login() {
   const passwordField = useRef("");
 
   const onSubmit = async () => {
-    console.log(emailField, passwordField);
     const result = await signIn("credentials", {
       username: emailField.current,
       password: passwordField.current,
