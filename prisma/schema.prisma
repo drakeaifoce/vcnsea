@@ -11,51 +11,32 @@ datasource db {
 }
 
 model Student {
-  id          Int          @id @default(autoincrement())
-  firstName   String
-  secondName  String
-  email       String
-  password    String
-  cv          CV?
-  StudentInfo StudentInfo?
-  Responses   Response[]
+  id              Int              @id @default(autoincrement())
+  firstName       String
+  secondName      String
+  email           String
+  password        String
+  avatar          String?
+  specialty       String?
+  city            String?
+  website         String?
+  quote           String?
+  about           String?
+  workExperiences WorkExperience[]
+  Responses       Response[]
+  CV              CV?
 }
 
-model CV {
-  id             Int             @id @default(autoincrement())
-  cv_file_path   String
-  skills         String
-  student        Student         @relation(fields: [studentId], references: [id])
-  studentId      Int             @unique
-  jobExperiences JobExperience[]
-}
-
-model StudentInfo {
-  id          Int     @id @default(autoincrement())
-  bio         String
-  age         String
-  quote       String
-  location    String
-  goals       String
-  frustration String
-  avatar      String?
-  introvert   Int
-  busy        Int
-  analytical  Int
-  messy       Int
-  independent Int
-  Student     Student @relation(fields: [studentId], references: [id])
-  studentId   Int     @unique
-}
-
-model JobExperience {
+model WorkExperience {
   id           Int      @id @default(autoincrement())
   company_name String
-  position     String
-  start_date   DateTime
-  end_date     DateTime
-  cv           CV       @relation(fields: [cvId], references: [id])
-  cvId         Int
+  company_link String
+  city         String
+  start_date   String
+  end_date     String
+  description  String
+  Student      Student? @relation(fields: [studentId], references: [id])
+  studentId    Int?
 }
 
 model Company {
@@ -70,19 +51,33 @@ model Company {
   description  String
   avatar       String?
   password     String
-  vacancies    Vacancy[]
+  Vacancies    Vacancy[]
 }
 
 model Vacancy {
-  id          Int        @id @default(autoincrement())
-  salary_min  String
-  salary_max  String
-  skills      String
-  title       String
-  description String
-  company     Company    @relation(fields: [companyId], references: [id])
-  companyId   Int
-  responses   Response[]
+  id            Int        @id @default(autoincrement())
+  floorSalary   String
+  ceilingSalary String
+  title         String
+  description   String
+  company       Company    @relation(fields: [companyId], references: [id])
+  companyId     Int
+  Responses     Response[]
+  Tags          Tag[]
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String
+  Vacancies Vacancy[]
+}
+
+model CV {
+  id           Int     @id @default(autoincrement())
+  cv_file_path String
+  skills       String
+  student      Student @relation(fields: [studentId], references: [id])
+  studentId    Int     @unique
 }
 
 model Response {
