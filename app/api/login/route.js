@@ -1,42 +1,50 @@
 import * as bcrypt from "bcrypt";
 import { signJwtAccessToken } from "../../jwt";
-import prisma from "../../prisma";
+import { prisma } from "../../prisma";
 
 export async function POST(request) {
   const body = await request.json();
 
-  const user = await prisma.student.findFirst({
+  const student = await prisma.student.findFirst({
     where: {
       email: body.username,
     },
   });
 
-  if (!user) {
-    const company = await prisma.company.findFirst({
-      where: {
-        email: body.username,
-      },
-    });
+  if (student && (await bcrypt.compare(body.password, student.password))) {
+    const userWithoutPass = { ...student };
+    delete userWithoutPass.password;
 
-    if (company && (await bcrypt.compare(body.password, company.password))) {
-      const { password, ...userWithoutPass } = user;
-      const accessToken = signJwtAccessToken(userWithoutPass);
-      const result = {
-        ...userWithoutPass,
-        accessToken,
-      };
-      return new Response(JSON.stringify(result));
-    }
-  }
-
-  if (user && (await bcrypt.compare(body.password, user.password))) {
-    const { password, ...userWithoutPass } = user;
     const accessToken = signJwtAccessToken(userWithoutPass);
     const result = {
       ...userWithoutPass,
       accessToken,
     };
+
     return new Response(JSON.stringify(result));
   }
+
+  const companyUser = await prisma.company.findFirst({
+    where: {
+      email: body.username,
+    },
+  });
+
+  if (
+    companyUser &&
+    (await bcrypt.compare(body.password, companyUser.password))
+  ) {
+    const userWithoutPass = { ...companyUser };
+    delete userWithoutPass.password;
+
+    const accessToken = signJwtAccessToken(userWithoutPass);
+    const result = {
+      ...userWithoutPass,
+      accessToken,
+    };
+
+    return new Response(JSON.stringify(result));
+  }
+
   return new Response(JSON.stringify(null));
 }
