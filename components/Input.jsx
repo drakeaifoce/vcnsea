@@ -8,7 +8,10 @@ export const Input = forwardRef(
         {label ? (
           <div className="flex flex-col">
             {label && (
-              <label className="text-sm font-medium" htmlFor={name}>
+              <label
+                className="text-sm font-normal text-sage-10"
+                htmlFor={name}
+              >
                 {label}
               </label>
             )}

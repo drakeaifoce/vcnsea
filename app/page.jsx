@@ -1,10 +1,17 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { prisma } from "./prisma";
 
 export default async function Index() {
-  const vacancies = await prisma.vacancy.findMany();
+  const vacancies = await prisma.vacancy.findMany({
+    include: {
+      company: true,
+    },
+  });
+
+  console.log(vacancies);
 
   return (
     <div className="container mx-auto px-4">
@@ -32,8 +39,9 @@ export default async function Index() {
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {vacancies.map((vacancy) => {
           return (
-            <div
+            <Link
               key={vacancy.id}
+              href={`/vacancy/${vacancy.id}`}
               className="rounded-xl border border-sage-7 bg-sage-2"
             >
               <div key={vacancy.id} className="flex flex-col gap-3 p-4">
@@ -46,7 +54,7 @@ export default async function Index() {
                     width={24}
                   />
                   <p className="text-base font-normal text-sage-11">
-                    {vacancy.companyName}, {vacancy.city}
+                    {vacancy.company.company_name}, {vacancy.location}
                   </p>
                 </header>
                 <main className="flex flex-col gap-1">
@@ -63,7 +71,7 @@ export default async function Index() {
                   </div>
                 </footer>
               </div>
-            </div>
+            </Link>
           );
         })}
       </section>

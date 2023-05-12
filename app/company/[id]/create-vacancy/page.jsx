@@ -1,10 +1,24 @@
+import { redirect } from "next/navigation";
 import { Button } from "../../../../components/Button";
 import { Input } from "../../../../components/Input";
+import { prisma } from "../../../prisma";
 
-export default function CreateVacancy(params) {
+export default function CreateVacancy({ params }) {
   const createVacancyAction = async (data) => {
     "use server";
     console.log(data);
+    const vacancy = await prisma.vacancy.create({
+      data: {
+        title: data.get("title"),
+        floorSalary: Number(data.get("floorSalary")),
+        ceilingSalary: Number(data.get("ceilingSalary")),
+        location: data.get("location"),
+        description: data.get("description"),
+        companyId: Number(params.id),
+      },
+    });
+
+    redirect(`/company/${params.id}`);
   };
   return (
     <div className="container mx-auto">
@@ -19,9 +33,11 @@ export default function CreateVacancy(params) {
             label="Название позиции"
             required
           />
-          <div className="flex flex-col gap-1">
-            <h5 className="text-base font-medium">Заработная плата</h5>
-            <div className="flex flex-row gap-8">
+          <div className="flex flex-col">
+            <h5 className="text-base font-normal text-sage-12">
+              Заработная плата
+            </h5>
+            <section className="flex flex-row gap-8">
               <Input
                 id="floorSalary"
                 name="floorSalary"
@@ -40,9 +56,17 @@ export default function CreateVacancy(params) {
                 label="До"
                 required
               />
-            </div>
+            </section>
           </div>
-
+          <Input
+            id="location"
+            name="location"
+            placeholder="Астана"
+            type="text"
+            className="w-full"
+            label="Локация"
+            required
+          />
           <Input
             id="description"
             name="description"
