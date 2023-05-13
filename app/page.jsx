@@ -45,11 +45,12 @@ export default async function Index() {
               <div key={vacancy.id} className="flex flex-col gap-3 p-4">
                 <header className="flex flex-row justify-between">
                   <Image
-                    src={vacancy.logo ? vacancy.logo : "/logo_placeholder.svg"}
+                    src={`https://ui-avatars.com/api/name=${vacancy.company.company_name}`}
                     alt={vacancy.companyName}
-                    className="rounded-full"
-                    height={24}
-                    width={24}
+                    className="h-6 w-6 rounded-full"
+                    height={0}
+                    width={0}
+                    unoptimized
                   />
                   <p className="text-base font-normal text-sage-11">
                     {vacancy.company.company_name}, {vacancy.location}

@@ -57,7 +57,7 @@ export default function VacancyPage({ params }) {
         <div className="flex flex-col gap-4 px-4">
           <section className="flex flex-row items-center justify-between">
             <Image
-              src="/logo_placeholder.svg"
+              src={`https://ui-avatars.com/api/name=${vacancy.company.company_name}`}
               unoptimized
               width={0}
               height={0}

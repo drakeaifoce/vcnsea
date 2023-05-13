@@ -29,7 +29,9 @@ export default async function UserProfile({ params }) {
       <div className="flex flex-col gap-8">
         <div className="flex flex-row gap-8">
           <Image
-            src="/logo_placeholder.svg"
+            src={`https://ui-avatars.com/api/name=${
+              student.firstName + student.secondName
+            }`}
             unoptimized
             width={0}
             height={0}
