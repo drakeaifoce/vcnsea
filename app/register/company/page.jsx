@@ -130,7 +130,7 @@ export default function RegisterCompany() {
             </Button>
             <div className="text-sm text-teal-12">
               Уже есть аккаунт искателя?{" "}
-              <Link href="/login/company" className="font-semibold">
+              <Link href="/login" className="font-semibold">
                 Войти
               </Link>
             </div>

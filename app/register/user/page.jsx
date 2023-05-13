@@ -80,7 +80,7 @@ export default function RegisterUser() {
             </Button>
             <div className="text-sm text-teal-12">
               Уже есть аккаунт таланта?{" "}
-              <Link href="/login/user" className="font-semibold">
+              <Link href="/login" className="font-semibold">
                 Войти
               </Link>
             </div>

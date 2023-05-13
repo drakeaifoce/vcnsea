@@ -69,7 +69,7 @@ export default function VacancyPage({ params }) {
           </section>
           <section className="flex flex-col">
             <Link
-              href={`/company/${vacancy.company.id}`}
+              href={`/profile/company/${vacancy.company.id}`}
               className="text-sm font-normal text-sage-10 hover:underline"
             >
               {vacancy.company.company_name}
