@@ -25,5 +25,5 @@ export default async function EditUserAccount({ params }) {
   const editUserAccountAction = async () => {
     console.log(1);
   };
-  return <div>page</div>;
+  return <>page</>;
 }

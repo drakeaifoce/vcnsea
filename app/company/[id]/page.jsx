@@ -20,7 +20,7 @@ export default async function CompanyAccount({ params }) {
   });
 
   return (
-    <div>
+    <>
       <div className="flex flex-col gap-4 px-4">
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center gap-8">
@@ -31,14 +31,14 @@ export default async function CompanyAccount({ params }) {
               height={0}
               className="h-20 w-20 rounded-full"
             />
-            <div>
+            <>
               <h1 className="text-xl font-medium text-black">
                 {company.company_name}
               </h1>
               <h2 className="text-sm font-normal text-sage-11">
                 {company.city}
               </h2>
-            </div>
+            </>
           </div>
           <div className="flex flex-row gap-4">
             <Link href={`/company/${params.id}/create-vacancy`}>
@@ -118,6 +118,6 @@ export default async function CompanyAccount({ params }) {
           </table>
         </secion>
       </div>
-    </div>
+    </>
   );
 }

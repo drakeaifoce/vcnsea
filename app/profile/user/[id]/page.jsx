@@ -25,7 +25,7 @@ export default async function UserProfile({ params }) {
   });
 
   return (
-    <div>
+    <>
       <div className="flex flex-col gap-8">
         <div className="flex flex-row gap-8">
           <Image
@@ -37,7 +37,7 @@ export default async function UserProfile({ params }) {
             height={0}
             className="h-20 w-20 rounded-full"
           />
-          <div>
+          <>
             <h1 className="text-xl font-medium text-black">
               {student.firstName + " " + student.secondName}
             </h1>
@@ -54,14 +54,14 @@ export default async function UserProfile({ params }) {
                 {student.website}
               </Link>
             )}
-          </div>
+          </>
         </div>
         {student.quote && (
-          <div>
+          <>
             <p className="rounded-xl border-2 border-sage-4 px-6 py-4 text-sm font-normal text-sage-12">
               {student.quote}
             </p>
-          </div>
+          </>
         )}
 
         <div className="flex flex-col gap-1">
@@ -106,6 +106,6 @@ export default async function UserProfile({ params }) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

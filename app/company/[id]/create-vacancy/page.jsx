@@ -21,7 +21,7 @@ export default function CreateVacancy({ params }) {
     redirect(`/company/${params.id}`);
   };
   return (
-    <div>
+    <>
       <div className="bg-white">
         <form className="flex flex-col gap-6 px-4" action={createVacancyAction}>
           <Input
@@ -81,6 +81,6 @@ export default function CreateVacancy({ params }) {
           </Button>
         </form>
       </div>
-    </div>
+    </>
   );
 }

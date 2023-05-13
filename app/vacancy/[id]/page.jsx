@@ -53,7 +53,7 @@ export default function VacancyPage({ params }) {
 
   return (
     vacancy && (
-      <div>
+      <>
         <div className="flex flex-col gap-4 px-4">
           <section className="flex flex-row items-center justify-between">
             <Image
@@ -109,7 +109,7 @@ export default function VacancyPage({ params }) {
             </p>
           </section>
         </div>
-      </div>
+      </>
     )
   );
 }

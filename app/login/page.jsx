@@ -19,7 +19,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <>
       <Image
         height={0}
         width={0}
@@ -63,6 +63,6 @@ export default function Login() {
           </Button>
         </form>
       </div>
-    </div>
+    </>
   );
 }
