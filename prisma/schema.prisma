@@ -31,12 +31,13 @@ model WorkExperience {
   id           Int      @id @default(autoincrement())
   company_name String
   company_link String
+  position     String
   city         String
   start_date   String
   end_date     String
   description  String
   Student      Student? @relation(fields: [studentId], references: [id])
-  studentId    Int?
+  studentId    Int
 }
 
 model Company {
