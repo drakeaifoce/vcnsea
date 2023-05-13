@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRef } from "react";
 import { Button } from "../../components/Button";
@@ -18,9 +19,20 @@ export default function Login() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div>
+      <Image
+        height={0}
+        width={0}
+        unoptimized
+        src="/wave_wide.jpg"
+        className="h-20 w-full object-cover"
+      />
       <div className="mt-20 lg:px-96">
         <form className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20">
+          <h1 className="text-center text-2xl font-semibold text-teal-12">
+            Войти в аккаунт
+          </h1>
+
           <label htmlFor="email" className="sr-only">
             For email
           </label>

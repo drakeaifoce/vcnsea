@@ -12,7 +12,7 @@ export default async function Index() {
   });
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="w-full">
       <section className="mb-8 flex flex-row">
         <form className="flex w-full flex-row gap-4">
           <label htmlFor="search" className="sr-only">

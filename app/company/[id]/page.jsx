@@ -20,12 +20,12 @@ export default async function CompanyAccount({ params }) {
   });
 
   return (
-    <div className="container mx-auto">
-      <div className="mx-72 flex flex-col gap-4 px-4">
+    <div>
+      <div className="flex flex-col gap-4 px-4">
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center gap-8">
             <Image
-              src="/logo_placeholder.svg"
+              src={`https://ui-avatars.com/api/name=${company.company_name}`}
               unoptimized
               width={0}
               height={0}

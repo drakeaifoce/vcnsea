@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Register() {
   return (
-    <div className="container mx-auto">
+    <div>
       <div className="mt-20 flex flex-col items-center gap-8 lg:px-96">
         <h2 className="text-3xl font-semibold text-teal-12">
           Кем вы являетесь?

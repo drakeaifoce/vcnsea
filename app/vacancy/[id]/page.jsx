@@ -53,8 +53,8 @@ export default function VacancyPage({ params }) {
 
   return (
     vacancy && (
-      <div className="container mx-auto">
-        <div className="mx-72 flex flex-col gap-4 px-4">
+      <div>
+        <div className="flex flex-col gap-4 px-4">
           <section className="flex flex-row items-center justify-between">
             <Image
               src="/logo_placeholder.svg"

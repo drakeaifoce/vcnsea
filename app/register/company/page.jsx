@@ -34,7 +34,7 @@ export default function RegisterCompany() {
         src="/sunrise_wide.jpg"
         className="h-20 w-full object-cover"
       />
-      <div className="container mx-auto">
+      <div>
         <div className="mt-8 lg:px-96">
           <form
             className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20"

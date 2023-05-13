@@ -29,7 +29,7 @@ export default async function ManageApplicants({ params }) {
   });
 
   return (
-    <div className="container mx-auto">
+    <div>
       <table className="w-full table-auto text-left text-sm text-sage-10">
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>

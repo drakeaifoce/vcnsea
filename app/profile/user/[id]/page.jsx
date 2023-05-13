@@ -25,8 +25,8 @@ export default async function UserProfile({ params }) {
   });
 
   return (
-    <div className="container mx-auto">
-      <div className="mx-96 flex flex-col gap-8">
+    <div>
+      <div className="flex flex-col gap-8">
         <div className="flex flex-row gap-8">
           <Image
             src="/logo_placeholder.svg"
