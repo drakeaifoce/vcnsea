@@ -20,7 +20,6 @@ export default async function UserAccount({ params }) {
       quote: true,
       about: true,
       workExperiences: true,
-      Cv: false,
       Responses: true,
     },
   });
@@ -46,9 +45,9 @@ export default async function UserAccount({ params }) {
             <h2 className="text-sm font-normal text-sage-11">
               {student.specialty
                 ? student.specialty
-                : ("" + ", " + student.city
+                : "" + ", " + student.city
                 ? student.city
-                : "")}{" "}
+                : ""}{" "}
             </h2>
             {student.webiste && (
               <Link

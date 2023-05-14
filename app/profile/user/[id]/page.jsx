@@ -19,7 +19,6 @@ export default async function UserProfile({ params }) {
       quote: true,
       about: true,
       workExperiences: true,
-      Cv: false,
       Responses: true,
     },
   });
