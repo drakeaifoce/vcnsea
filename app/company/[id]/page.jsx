@@ -42,10 +42,10 @@ export default async function CompanyAccount({ params }) {
           </div>
           <div className="flex flex-row gap-4">
             <Link href={`/company/${params.id}/create-vacancy`}>
-              <Button variant="primary">Создать вакансию</Button>
+              <Button variant="primary">Create vacancy</Button>
             </Link>
             <Link href={`/company/${params.id}/manage-vacancies`}>
-              <Button variant="secondary">Управлять вакансиями</Button>
+              <Button variant="secondary">Manage vacancies</Button>
             </Link>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default async function CompanyAccount({ params }) {
         </section>
         <section className="grid grid-cols-3 ">
           <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-            Описание компании
+            Description
           </h6>
           <p className="cols-span-2 text-sm font-normal text-sage-12">
             {company.description}
@@ -67,7 +67,7 @@ export default async function CompanyAccount({ params }) {
         </section>
         <section className="grid grid-cols-3 ">
           <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-            Контакты
+            Contacts
           </h6>
           <p className="cols-span-2 text-sm font-normal text-sage-12">
             {company.email}
@@ -75,19 +75,19 @@ export default async function CompanyAccount({ params }) {
         </section>
         <secion className="flex flex-col gap-4">
           <h5 className="text-base font-medium text-sage-12">
-            Доступные вакансии
+            Available positions
           </h5>
           <table className="w-full table-auto text-left text-sm text-sage-10">
             <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
               <tr>
                 <th scope="col" className="px-6 py-3">
-                  Позиция
+                  Position
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  Локация
+                  Location
                 </th>
                 <th scope="col" className="px-6 py-3 text-left">
-                  Опубликована
+                  Post date
                 </th>
               </tr>
             </thead>
@@ -110,7 +110,7 @@ export default async function CompanyAccount({ params }) {
                       </Link>
                     </th>
                     <td className="px-6 py-4">{vacancy.location}</td>
-                    <td className="px-6 py-4">Вчера</td>
+                    <td className="px-6 py-4">Yesterday</td>
                   </tr>
                 );
               })}

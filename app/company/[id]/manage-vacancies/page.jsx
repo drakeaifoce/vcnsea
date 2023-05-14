@@ -13,25 +13,25 @@ export default async function ManageVacancies({ params }) {
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Позиция
+              Position
             </th>
             <th scope="col" className="px-6 py-3">
-              Локация
+              Location
             </th>
             <th scope="col" className="px-6 py-3">
-              Зарплата от
+              Salary from
             </th>
             <th scope="col" className="px-6 py-3">
-              До
+              To
             </th>
             <th scope="col" className="px-6 py-3 ">
-              Опубликована
+              Post date
             </th>
             <th scope="col" className="px-6 py-3 ">
-              Респонденты
+              Applicants
             </th>
             <th scope="col" className="px-6 py-3 ">
-              Редактировать
+              Edit
             </th>
           </tr>
         </thead>
@@ -53,13 +53,13 @@ export default async function ManageVacancies({ params }) {
                 <td className="px-6 py-4">{vacancy.location}</td>
                 <td className="px-6 py-4">{vacancy.floorSalary}</td>
                 <td className="px-6 py-4">{vacancy.ceilingSalary}</td>
-                <td className="px-6 py-4">Вчера</td>
+                <td className="px-6 py-4">Yesterday</td>
                 <td className="px-6 py-4">
                   <Link
                     href={`/company/${params.id}/manage-vacancies/${vacancy.id}/manage-applicants`}
                     className="text-teal-11 hover:underline"
                   >
-                    Посмотреть
+                    View
                   </Link>
                 </td>
                 <td className="px-6 py-4">
@@ -67,7 +67,7 @@ export default async function ManageVacancies({ params }) {
                     href={`/company/${params.id}/manage-vacancies/${vacancy.id}`}
                     className="text-sage-11 hover:underline"
                   >
-                    Изменить
+                    Edit
                   </Link>
                 </td>
               </tr>

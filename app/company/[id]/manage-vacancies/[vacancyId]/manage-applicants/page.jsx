@@ -34,16 +34,16 @@ export default async function ManageApplicants({ params }) {
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Имя
+              Fullname
             </th>
             <th scope="col" className="px-6 py-3">
-              Электронная почта
+              E-mail
             </th>
             <th scope="col" className="px-6 py-3">
-              Статус
+              Status
             </th>
             <th scope="col" className="px-6 py-3">
-              Ссылка
+              Link
             </th>
           </tr>
         </thead>
@@ -74,7 +74,7 @@ export default async function ManageApplicants({ params }) {
                     href={`/profile/user/${application.Student.id}`}
                     className="text-teal-11 hover:underline"
                   >
-                    Посмотреть
+                    View
                   </Link>
                 </td>
               </tr>

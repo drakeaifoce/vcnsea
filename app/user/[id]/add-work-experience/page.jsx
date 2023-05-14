@@ -24,14 +24,12 @@ export default async function AddWorkExperience({ params }) {
   return (
     <div>
       <form className="flex flex-col gap-9" action={addWorkExperienceAction}>
-        <h1 className="text-xl font-medium text-black">
-          Добавление опыта работы
-        </h1>
+        <h1 className="text-xl font-medium text-black">Add work experience</h1>
         <Input
           id="position"
           name="position"
-          placeholder="Frontend разработчик"
-          label="Позиция"
+          placeholder="Frontend developer"
+          label="Position"
           type="text"
           required
         />
@@ -39,16 +37,16 @@ export default async function AddWorkExperience({ params }) {
           <Input
             id="company_name"
             name="company_name"
-            placeholder="Название компании"
-            label="Название компании"
+            placeholder="Company name"
+            label="Company name"
             type="text"
             required
           />
           <Input
             id="company_link"
             name="company_link"
-            placeholder="Ссылка на компанию"
-            label="Ссылка"
+            placeholder="Company link"
+            label="Link"
             type="text"
             required
           />
@@ -56,8 +54,8 @@ export default async function AddWorkExperience({ params }) {
         <Input
           id="city"
           name="city"
-          placeholder="Локация"
-          label="Астана"
+          placeholder="Location"
+          label="Astana"
           type="text"
           required
         />
@@ -65,16 +63,16 @@ export default async function AddWorkExperience({ params }) {
           <Input
             id="start_date"
             name="start_date"
-            placeholder="Июнь, 2022"
-            label="Дата начала"
+            placeholder="Jun, 2022"
+            label="Start date"
             type="text"
             required
           />
           <Input
             id="end_date"
             name="end_date"
-            placeholder="Март, 2023"
-            label="Дата завершения"
+            placeholder="Mar, 2023"
+            label="End date"
             type="text"
             required
           />
@@ -82,13 +80,13 @@ export default async function AddWorkExperience({ params }) {
         <Input
           id="description"
           name="description"
-          placeholder="Описание вашей работы"
-          label="Описание"
+          placeholder="I was working on ..."
+          label="Description"
           type="text"
           required
         />
         <Button variant="primary" type="submit">
-          Добавить
+          Add
         </Button>
       </form>
     </div>

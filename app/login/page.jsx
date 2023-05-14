@@ -30,7 +30,7 @@ export default function Login() {
       <div className="mt-20 lg:px-96">
         <form className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20">
           <h1 className="text-center text-2xl font-semibold text-teal-12">
-            Войти в аккаунт
+            Sign in account
           </h1>
 
           <label htmlFor="email" className="sr-only">
@@ -39,7 +39,7 @@ export default function Login() {
           <Input
             id="email"
             name="email"
-            placeholder="Введите вашу электронную почту"
+            placeholder="Enter you email"
             type="email"
             className="w-full"
             required
@@ -52,14 +52,14 @@ export default function Login() {
           <Input
             id="password"
             name="password"
-            placeholder="Введите ваш пароль"
+            placeholder="Enter your password"
             type="password"
             className="w-full"
             required
             onChange={(e) => (passwordField.current = e.target.value)}
           />
           <Button variant="secondary" type="button" onClick={onSubmit}>
-            Войти
+            Sign in
           </Button>
         </form>
       </div>

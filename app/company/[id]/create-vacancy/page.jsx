@@ -27,16 +27,14 @@ export default function CreateVacancy({ params }) {
           <Input
             id="title"
             name="title"
-            placeholder="Python Backend разработчик"
+            placeholder="Python Backend Developer"
             type="text"
             className="w-full"
-            label="Название позиции"
+            label="Position name"
             required
           />
           <div className="flex flex-col">
-            <h5 className="text-base font-normal text-sage-12">
-              Заработная плата
-            </h5>
+            <h5 className="text-base font-normal text-sage-12">Salary</h5>
             <section className="flex flex-row gap-8">
               <Input
                 id="floorSalary"
@@ -44,7 +42,7 @@ export default function CreateVacancy({ params }) {
                 placeholder="150000"
                 type="text"
                 className="w-full"
-                label="От"
+                label="From"
                 required
               />
               <Input
@@ -53,7 +51,7 @@ export default function CreateVacancy({ params }) {
                 placeholder="300000"
                 type="text"
                 className="w-full"
-                label="До"
+                label="To"
                 required
               />
             </section>
@@ -61,23 +59,23 @@ export default function CreateVacancy({ params }) {
           <Input
             id="location"
             name="location"
-            placeholder="Астана"
+            placeholder="Astana"
             type="text"
             className="w-full"
-            label="Локация"
+            label="Location"
             required
           />
           <Input
             id="description"
             name="description"
-            placeholder="В нашу команду требуется человек..."
+            placeholder="We need person, who ..."
             type="text"
             className="w-full"
-            label="Описание вакансии"
+            label="Description"
             required
           />
           <Button type="submit" variant="secondary">
-            Создать
+            Create
           </Button>
         </form>
       </div>

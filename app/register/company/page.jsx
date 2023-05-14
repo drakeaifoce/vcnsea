@@ -41,13 +41,13 @@ export default function RegisterCompany() {
             action={registerCompanyAction}
           >
             <h1 className="text-center text-2xl font-semibold text-teal-12">
-              Погрузитесь в море <br /> талантов
+              Dive into talaents <br /> sea
             </h1>
 
             <Input
               id="email"
               name="email"
-              placeholder="Введите вашу электронную почту"
+              placeholder="Enter your email"
               type="email"
               className="w-full"
               required
@@ -56,7 +56,7 @@ export default function RegisterCompany() {
             <Input
               id="firstName"
               name="firstName"
-              placeholder="Введите ваше имя"
+              placeholder="Enter your first name"
               type="text"
               className="w-full"
               required
@@ -65,7 +65,7 @@ export default function RegisterCompany() {
             <Input
               id="secondName"
               name="secondName"
-              placeholder="Введите вашу фамилию"
+              placeholder="Enter your second name"
               type="text"
               className="w-full"
               required
@@ -74,7 +74,7 @@ export default function RegisterCompany() {
             <Input
               id="position"
               name="position"
-              placeholder="Введите вашу должность"
+              placeholder="Enter your position"
               type="text"
               className="w-full"
               required
@@ -83,7 +83,7 @@ export default function RegisterCompany() {
             <Input
               id="company_name"
               name="company_name"
-              placeholder="Введите название вашей компании"
+              placeholder="Enter the name of your company"
               type="text"
               className="w-full"
               required
@@ -92,7 +92,7 @@ export default function RegisterCompany() {
             <Input
               id="BIN"
               name="BIN"
-              placeholder="Введите БИН вашей компании"
+              placeholder="Enter BIN of your company"
               type="text"
               className="w-full"
               required
@@ -101,7 +101,7 @@ export default function RegisterCompany() {
             <Input
               id="city"
               name="city"
-              placeholder="Введите город вашей компании"
+              placeholder="Enter location of your company"
               type="text"
               className="w-full"
               required
@@ -110,7 +110,7 @@ export default function RegisterCompany() {
             <Input
               id="description"
               name="description"
-              placeholder="Введите краткое описание вашей компании"
+              placeholder="Enter short description of your company"
               type="text"
               className="w-full"
               required
@@ -119,19 +119,19 @@ export default function RegisterCompany() {
             <Input
               id="password"
               name="password"
-              placeholder="Введите ваш пароль"
+              placeholder="Enter password"
               type="password"
               className="w-full"
               required
             />
 
             <Button variant="primary" type="submit">
-              Зарегистрироваться
+              Register
             </Button>
             <div className="text-sm text-teal-12">
-              Уже есть аккаунт искателя?{" "}
+              Already have an account?{" "}
               <Link href="/login" className="font-semibold">
-                Войти
+                Login
               </Link>
             </div>
           </form>

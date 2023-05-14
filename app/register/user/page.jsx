@@ -36,13 +36,13 @@ export default function RegisterUser() {
             action={registerUserAction}
           >
             <h1 className="text-center text-2xl font-semibold text-teal-12">
-              Погрузитесь в море <br /> вакансий
+              Dive into the <br /> vcnsea
             </h1>
 
             <Input
               id="email"
               name="email"
-              placeholder="Введите вашу электронную почту"
+              placeholder="Enter your email"
               type="email"
               className="w-full"
               required
@@ -51,7 +51,7 @@ export default function RegisterUser() {
             <Input
               id="firstName"
               name="firstName"
-              placeholder="Введите ваше имя"
+              placeholder="Enter your first name"
               type="text"
               className="w-full"
               required
@@ -60,7 +60,7 @@ export default function RegisterUser() {
             <Input
               id="secondName"
               name="secondName"
-              placeholder="Введите вашу фамилию"
+              placeholder="Enter your second name"
               type="text"
               className="w-full"
               required
@@ -69,19 +69,19 @@ export default function RegisterUser() {
             <Input
               id="password"
               name="password"
-              placeholder="Введите ваш пароль"
+              placeholder="Enter your password"
               type="password"
               className="w-full"
               required
             />
 
             <Button variant="primary" type="submit">
-              Зарегистрироваться
+              Register
             </Button>
             <div className="text-sm text-teal-12">
-              Уже есть аккаунт таланта?{" "}
+              Already have an account??{" "}
               <Link href="/login" className="font-semibold">
-                Войти
+                Login
               </Link>
             </div>
           </form>
