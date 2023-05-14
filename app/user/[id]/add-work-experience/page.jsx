@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { Button } from "../../../../components/Button";
 import { Input } from "../../../../components/Input";
+import { Textfield } from "../../../../components/Textfield";
 import { prisma } from "../../../prisma";
 
 export default async function AddWorkExperience({ params }) {
@@ -77,13 +78,14 @@ export default async function AddWorkExperience({ params }) {
             required
           />
         </div>
-        <Input
+        <Textfield
           id="description"
           name="description"
           placeholder="I was working on ..."
           label="Description"
           type="text"
           required
+          className="w-full"
         />
         <Button variant="primary" type="submit">
           Add
