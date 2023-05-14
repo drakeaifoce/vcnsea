@@ -19,6 +19,7 @@ export default function VacancyPage({ params }) {
       }),
     });
 
+    alert("Вы успешно подали заявку");
     return res;
   };
 
