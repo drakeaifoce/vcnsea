@@ -29,6 +29,7 @@ export default function RegisterCompany() {
   return (
     <>
       <Image
+        alt="sunrise"
         height={0}
         width={0}
         unoptimized

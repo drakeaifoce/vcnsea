@@ -34,6 +34,7 @@ export default async function UserProfile({ params }) {
             unoptimized
             width={0}
             height={0}
+            alt={student.firstName + " " + student.secondName}
             className="h-20 w-20 rounded-full"
           />
           <>

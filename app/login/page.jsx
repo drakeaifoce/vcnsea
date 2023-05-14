@@ -21,6 +21,7 @@ export default function Login() {
   return (
     <>
       <Image
+        alt="wave"
         height={0}
         width={0}
         unoptimized

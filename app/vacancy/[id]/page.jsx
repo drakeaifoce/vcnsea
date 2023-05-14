@@ -62,6 +62,7 @@ export default function VacancyPage({ params }) {
               width={0}
               height={0}
               className="h-20 w-20 rounded-full"
+              alt={vacancy.company.company_name}
             />
             <Button onClick={onSubmitApplication} variant="primary">
               Подать заявку

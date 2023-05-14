@@ -25,6 +25,7 @@ export default async function CompanyAccount({ params }) {
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center gap-8">
             <Image
+              alt={company.company_name}
               src={`https://ui-avatars.com/api/name=${company.company_name}`}
               unoptimized
               width={0}

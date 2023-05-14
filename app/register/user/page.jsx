@@ -24,6 +24,7 @@ export default function RegisterUser() {
   return (
     <>
       <Image
+        alt="ocean"
         height={0}
         width={0}
         unoptimized
