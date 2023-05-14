@@ -13,7 +13,7 @@ export default async function Index() {
 
   return (
     <div className="w-full">
-      <section className="mb-8 flex flex-row">
+      {/* <section className="mb-8 flex flex-row">
         <form className="flex w-full flex-row gap-4">
           <label htmlFor="search" className="sr-only">
             For search
@@ -28,7 +28,7 @@ export default async function Index() {
             Найти
           </Button>
         </form>
-      </section>
+      </section> */}
 
       <h1 className="mb-4 text-2xl font-medium text-sage-12">
         Доступно {vacancies.length} вакансий
