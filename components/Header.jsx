@@ -16,17 +16,16 @@ export const Header = () => {
         ""
       ) : (
         <div className="flex flex-row gap-4">
-          <Button variant="transparent" type="button">
+          {/* <Button variant="transparent" type="button">
             <span className="md:hidden">Опубликовать</span>
             <span className="hidden md:inline-block">Добавить вакансию</span>
-          </Button>
+          </Button> */}
           <Button variant="tertiary" type="button" onClick={() => signIn()}>
-            Войти
+            Sign in
           </Button>
           <Link href="/register">
             <Button variant="primary" type="button">
-              Начать{" "}
-              <span className="hidden md:inline-block">пользоваться</span>
+              Get started
             </Button>
           </Link>
         </div>

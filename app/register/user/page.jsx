@@ -14,6 +14,7 @@ export default function RegisterUser() {
         email: data.get("email"),
         firstName: data.get("firstName"),
         secondName: data.get("secondName"),
+        Role: "USER",
         password: await bcrypt.hash(data.get("password"), 10),
       },
     });

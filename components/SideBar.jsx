@@ -25,8 +25,16 @@ export const SideBar = () => {
           <ArrowLeft size={20} className="text-sage-12" />
         </button>
       </div>
-      {session && session.user ? (
-        <button>
+      {session && session.user && session.user.id ? (
+        <button
+          onClick={() =>
+            router.push(
+              session.user.Role === "USER"
+                ? `/user/${session.user.id}`
+                : `/company${session.user.id}`,
+            )
+          }
+        >
           <Image
             alt={`${
               session.user.firstName.charAt(0) +

@@ -19,6 +19,7 @@ export default function RegisterCompany() {
         BIN: data.get("BIN"),
         city: data.get("city"),
         description: data.get("description"),
+        Role: "COMPANY",
         password: await bcrypt.hash(data.get("password"), 10),
       },
     });
