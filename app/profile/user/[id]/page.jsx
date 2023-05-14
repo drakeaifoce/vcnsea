@@ -65,14 +65,14 @@ export default async function UserProfile({ params }) {
         )}
 
         <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-medium text-black">Обо мне</h3>
+          <h3 className="text-sm font-medium text-black">About</h3>
           <p className="ml-4 text-sm font-normal text-sage-11">
             {student.about}
           </p>
         </div>
         <div className="flex flex-col gap-1">
           <div className="flex w-full flex-row items-center justify-between">
-            <h3 className="text-sm font-medium text-black">Опыт работы</h3>
+            <h3 className="text-sm font-medium text-black">Work experience</h3>
           </div>
           <div className="flex flex-col gap-9">
             {student.workExperiences.map((experience) => {
