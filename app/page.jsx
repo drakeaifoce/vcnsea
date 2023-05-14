@@ -42,7 +42,7 @@ export default async function Index() {
               href={`/vacancy/${vacancy.id}`}
               className="rounded-xl border border-sage-7 bg-sage-2"
             >
-              <div key={vacancy.id} className="flex flex-col gap-3 p-4">
+              <div className="flex flex-col gap-3 p-4">
                 <header className="flex flex-row justify-between">
                   <Image
                     src={`https://ui-avatars.com/api/name=${vacancy.company.company_name}`}
