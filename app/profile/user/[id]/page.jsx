@@ -26,7 +26,7 @@ export default async function UserProfile({ params }) {
   return (
     <>
       <div className="flex flex-col gap-8">
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-row items-center gap-8">
           <Image
             src={`https://ui-avatars.com/api/name=${
               student.firstName + student.secondName
@@ -54,6 +54,9 @@ export default async function UserProfile({ params }) {
                 {student.website}
               </Link>
             )}
+            <address className="text-sm font-normal not-italic text-sage-11">
+              {student.email ? student.email : " "}
+            </address>
           </>
         </div>
         {student.quote && (
@@ -77,11 +80,9 @@ export default async function UserProfile({ params }) {
           <div className="flex flex-col gap-9">
             {student.workExperiences.map((experience) => {
               return (
-                <div key={experience.id} className="flex flex-row gap-9">
+                <div key={experience.id} className="flex flex-row gap-20">
                   <h4 className="text-sm font-normal text-sage-9">
-                    {" "}
-                    {experience.start_date + " -"}
-                    <br />
+                    {experience.start_date + " - "}
                     {experience.end_date}
                   </h4>
                   <div className="flex flex-col gap-2">
