@@ -82,8 +82,8 @@ model Application {
   status    String
   Student   Student? @relation(fields: [studentId], references: [id])
   studentId Int
-  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
-  vacancyId Int
+  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id], onDelete: Cascade)
+  vacancyId Int?
 }
 
 model Appointment {
@@ -95,6 +95,6 @@ model Appointment {
   studentId Int
   company   Company? @relation(fields: [companyId], references: [id])
   companyId Int
-  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
-  vacancyId Int
+  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id], onDelete: Cascade)
+  vacancyId Int?
 }

@@ -22,8 +22,18 @@ export default async function ManageVacancies({ params }) {
       companyId: Number(params.id),
     },
   });
+
+  const deleteVacancyAction = async (data) => {
+    "use server";
+    const deleted = await prisma.vacancy.delete({
+      where: {
+        id: Number(data.get("id")),
+      },
+    });
+  };
   return (
-    <>
+    <div className="flex flex-col gap-8">
+      <h1 className="text-xl font-medium text-black">Manage vacancies</h1>
       <table className="w-full table-auto text-left text-sm text-sage-10">
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>
@@ -45,9 +55,7 @@ export default async function ManageVacancies({ params }) {
             <th scope="col" className="px-6 py-3 ">
               Applicants
             </th>
-            <th scope="col" className="px-6 py-3 ">
-              Edit
-            </th>
+            <th scope="col" className="px-6 py-3 " />
           </tr>
         </thead>
         <tbody>
@@ -80,18 +88,28 @@ export default async function ManageVacancies({ params }) {
                   </Link>
                 </td>
                 <td className="px-6 py-4">
-                  <Link
-                    href={`/company/${params.id}/manage-vacancies/${vacancy.id}`}
-                    className="text-sage-11 hover:underline"
-                  >
-                    Edit
-                  </Link>
+                  <form action={deleteVacancyAction}>
+                    <input
+                      readOnly
+                      id="id"
+                      name="id"
+                      value={vacancy.id}
+                      className="hidden"
+                      type="text"
+                    />
+                    <button
+                      type="submit"
+                      className="text-red-11 hover:underline"
+                    >
+                      Delete
+                    </button>
+                  </form>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
