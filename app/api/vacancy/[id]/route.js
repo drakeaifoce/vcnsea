@@ -4,7 +4,7 @@ export async function POST(request, { params }) {
   const body = await request.json();
   const application = await prisma.application.create({
     data: {
-      status: "Отправлено",
+      status: "Pending",
       vacancyId: Number(params.id),
       studentId: body.studentId,
     },
