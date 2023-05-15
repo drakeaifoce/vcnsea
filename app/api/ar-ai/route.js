@@ -6,12 +6,12 @@ export const POST = async (req) => {
     const { prompt } = body;
     const res = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: prompt }],
+      messages: [{ role: "system", content: prompt }],
       temperature: 0.7,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
-      max_tokens: 200,
+      max_tokens: 2000,
       stream: false,
       n: 1,
     });

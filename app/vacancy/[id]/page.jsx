@@ -1,4 +1,5 @@
 "use client";
+import { Robot } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -62,9 +63,26 @@ export default function VacancyPage({ params }) {
               alt={vacancy.company.company_name}
             />
             {session && session.user && session.user.Role === "USER" ? (
-              <Button onClick={onSubmitApplication} variant="primary">
-                Submit
-              </Button>
+              <div className="flex flex-row items-center gap-4">
+                <Link
+                  href={{
+                    pathname: "/ar-ai/",
+                    query: { p: vacancy.title.replace(/ /g, "") },
+                  }}
+                >
+                  <Button
+                    className="flex flex-row items-center gap-2"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <p>Try sample interview with AR-AI</p>{" "}
+                    <Robot size={24} className="text-current" />
+                  </Button>
+                </Link>
+                <Button onClick={onSubmitApplication} variant="primary">
+                  Submit
+                </Button>
+              </div>
             ) : (
               <></>
             )}
