@@ -36,7 +36,7 @@ export default function EditUserAccount({ params }) {
 
   const updateUserAccountData = async () => {
     const res = await fetch(
-      `http://localhost:3000/api/user/${params.id}/edit`,
+      `${process.env.API_URL}/api/user/${params.id}/edit`,
       {
         method: "PATCH",
         headers: {

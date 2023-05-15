@@ -28,7 +28,7 @@ export default function VacancyPage({ params }) {
     const getVacancy = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/api/vacancy/${params.id}`,
+          `${process.env.API_URL}/api/vacancy/${params.id}`,
           {
             method: "GET",
             headers: {
