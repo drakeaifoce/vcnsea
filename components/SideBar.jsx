@@ -3,6 +3,7 @@ import {
   ArrowLeft,
   Calendar,
   Fish,
+  PencilSimple,
   SignIn,
   SuitcaseSimple,
 } from "@phosphor-icons/react";
@@ -31,9 +32,14 @@ export const SideBar = () => {
         session.user &&
         session.user.id &&
         session.user.Role === "COMPANY" ? (
-          <Link href={`/company/${session.user.id}/interviews`}>
-            <Calendar size={20} className="text-sage-12" />
-          </Link>
+          <>
+            <Link href={`/company/${session.user.id}/manage-vacancies`}>
+              <PencilSimple size={20} className="text-sage-12" />
+            </Link>
+            <Link href={`/company/${session.user.id}/interviews`}>
+              <Calendar size={20} className="text-sage-12" />
+            </Link>
+          </>
         ) : (
           <></>
         )}
