@@ -8,7 +8,7 @@ import { Button } from "../../../components/Button";
 export default function VacancyPage({ params }) {
   const { data: session } = useSession();
   const onSubmitApplication = async () => {
-    const res = await fetch(`api/vacancy/${params.id}`, {
+    const res = await fetch(`/api/vacancy/${params.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
