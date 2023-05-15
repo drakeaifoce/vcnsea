@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "../../../../../../components/Button";
 import { prisma } from "../../../../../prisma";
 
 export default async function ManageApplicants({ params }) {
@@ -41,7 +42,15 @@ export default async function ManageApplicants({ params }) {
   };
 
   return (
-    <>
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-row items-center justify-between">
+        <h1 className="text-xl font-medium text-black">Applicants list</h1>
+        <Link href={`/company/${params.id}/interviews`}>
+          <Button variant="primary" type="button">
+            Scheduled interviews
+          </Button>
+        </Link>
+      </div>
       <table className="w-full table-auto text-left text-sm text-sage-10">
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>
@@ -133,6 +142,6 @@ export default async function ManageApplicants({ params }) {
           })}
         </tbody>
       </table>
-    </>
+    </div>
   );
 }
