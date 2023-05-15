@@ -70,6 +70,9 @@ export default async function CompanyAccount({ params }) {
             <Link href={`/company/${params.id}/manage-vacancies`}>
               <Button variant="secondary">Manage vacancies</Button>
             </Link>
+            <Link href={`/company/${params.id}/interviews`}>
+              <Button variant="transparent">Scheduled interviews</Button>
+            </Link>
           </div>
         </div>
         <section className="grid grid-cols-3 ">
