@@ -20,6 +20,13 @@ export default async function Interviews({ params }) {
       company: false,
       studentId: true,
       companyId: false,
+      Vacancy: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
+      vacancyId: true,
     },
   });
   return (
@@ -28,6 +35,9 @@ export default async function Interviews({ params }) {
       <table className="w-full table-auto text-left text-sm text-sage-10">
         <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
           <tr>
+            <th scope="col" className="px-6 py-3">
+              Position
+            </th>
             <th scope="col" className="px-6 py-3">
               Candidate
             </th>
@@ -54,6 +64,14 @@ export default async function Interviews({ params }) {
                   className="text- whitespace-nowrap px-6 py-4 font-medium text-sage-12"
                 >
                   <Link
+                    href={`/vacancy/${interview.Vacancy.id}`}
+                    className=" hover:underline"
+                  >
+                    {interview.Vacancy.title}
+                  </Link>
+                </th>
+                <td className="px-6 py-4">
+                  <Link
                     className="hover:underline"
                     href={`/profile/user/${interview.studentId}`}
                   >
@@ -61,7 +79,7 @@ export default async function Interviews({ params }) {
                       " " +
                       interview.Student.secondName}
                   </Link>
-                </th>
+                </td>
                 <td className="px-6 py-4">{interview.date}</td>
                 <td className="px-6 py-4">{interview.time}</td>
                 <td className="px-6 py-4">

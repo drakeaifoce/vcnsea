@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { Button } from "../../../../components/Button";
 import { Input } from "../../../../components/Input";
+import { Textfield } from "../../../../components/Textfield";
 import { prisma } from "../../../prisma";
 
 export default function CreateVacancy({ params }) {
@@ -65,7 +66,7 @@ export default function CreateVacancy({ params }) {
             label="Location"
             required
           />
-          <Input
+          <Textfield
             id="description"
             name="description"
             placeholder="We need person, who ..."

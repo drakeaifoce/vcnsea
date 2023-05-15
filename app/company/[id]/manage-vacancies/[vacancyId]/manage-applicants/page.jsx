@@ -44,7 +44,15 @@ export default async function ManageApplicants({ params }) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-row items-center justify-between">
-        <h1 className="text-xl font-medium text-black">Applicants list</h1>
+        <h1 className="text-xl font-medium text-black">
+          Applicants list for{" "}
+          <Link
+            href={`/vacancy/${params.vacancyId}`}
+            className="text-teal-11 hover:underline"
+          >
+            {vacancyWithApplications.title}
+          </Link>
+        </h1>
         <Link href={`/company/${params.id}/interviews`}>
           <Button variant="primary" type="button">
             Scheduled interviews

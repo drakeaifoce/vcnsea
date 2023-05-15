@@ -74,6 +74,7 @@ model Vacancy {
   company       Company?      @relation(fields: [companyId], references: [id])
   companyId     Int
   Applications  Application[]
+  Appointment   Appointment[]
 }
 
 model Application {
@@ -94,4 +95,6 @@ model Appointment {
   studentId Int
   company   Company? @relation(fields: [companyId], references: [id])
   companyId Int
+  Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
+  vacancyId Int
 }

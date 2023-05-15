@@ -13,11 +13,10 @@ export default async function AppointInterview({ params }) {
         link: data.get("link"),
         studentId: Number(params.applicantId),
         companyId: Number(params.id),
+        vacancyId: Number(params.vacancyId),
       },
     });
-    redirect(
-      `/company/${params.id}/manage-vacancies/${params.vacancyId}/manage-applicants/interviews`,
-    );
+    redirect(`/company/${params.id}interviews`);
   };
   return (
     <div>
