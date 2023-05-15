@@ -30,6 +30,7 @@ model Student {
   Role            Role
   workExperiences WorkExperience[]
   Responses       Application[]
+  Appointment     Appointment[]
 }
 
 model WorkExperience {
@@ -46,10 +47,10 @@ model WorkExperience {
 }
 
 model Company {
-  id           Int       @id @default(autoincrement())
+  id           Int           @id @default(autoincrement())
   firstName    String
   secondName   String
-  email        String    @unique
+  email        String        @unique
   position     String
   company_name String
   BIN          String
@@ -59,6 +60,7 @@ model Company {
   Role         Role
   password     String
   Vacancies    Vacancy[]
+  Appointment  Appointment[]
 }
 
 model Vacancy {
@@ -81,4 +83,15 @@ model Application {
   studentId Int
   Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id])
   vacancyId Int
+}
+
+model Appointment {
+  id        Int      @id @default(autoincrement())
+  date      String
+  time      String
+  link      String
+  Student   Student? @relation(fields: [studentId], references: [id])
+  studentId Int
+  company   Company? @relation(fields: [companyId], references: [id])
+  companyId Int
 }
