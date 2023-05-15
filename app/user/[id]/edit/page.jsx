@@ -35,7 +35,7 @@ export default function EditUserAccount({ params }) {
   }, []);
 
   const updateUserAccountData = async () => {
-    const res = await fetch(`$/api/user/${params.id}/edit`, {
+    const res = await fetch(`/api/user/${params.id}/edit`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
