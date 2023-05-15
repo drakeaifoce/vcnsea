@@ -35,24 +35,21 @@ export default function EditUserAccount({ params }) {
   }, []);
 
   const updateUserAccountData = async () => {
-    const res = await fetch(
-      `${process.env.API_URL}/api/user/${params.id}/edit`,
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          secondName,
-          specialty,
-          city,
-          website,
-          quote,
-          about,
-        }),
+    const res = await fetch(`$/api/user/${params.id}/edit`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({
+        firstName,
+        secondName,
+        specialty,
+        city,
+        website,
+        quote,
+        about,
+      }),
+    });
     router.push(`/user/${params.id}`);
   };
 
