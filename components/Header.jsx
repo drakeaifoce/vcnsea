@@ -16,10 +16,6 @@ export const Header = () => {
         ""
       ) : (
         <div className="flex flex-row gap-4">
-          {/* <Button variant="transparent" type="button">
-            <span className="md:hidden">Опубликовать</span>
-            <span className="hidden md:inline-block">Добавить вакансию</span>
-          </Button> */}
           <Button variant="tertiary" type="button" onClick={() => signIn()}>
             Sign in
           </Button>

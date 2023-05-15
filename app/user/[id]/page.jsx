@@ -45,9 +45,9 @@ export default async function UserAccount({ params }) {
             <h2 className="text-sm font-normal text-sage-11">
               {student.specialty
                 ? student.specialty
-                : "" + ", " + student.city
+                : ("" + ", " + student.city
                 ? student.city
-                : ""}{" "}
+                : "")}{" "}
             </h2>
             {student.webiste && (
               <Link
@@ -59,7 +59,7 @@ export default async function UserAccount({ params }) {
             )}
           </>
           <Link href={`/user/${params.id}/edit`}>
-            <Button variant="primary">Редактировать</Button>
+            <Button variant="primary">Edit</Button>
           </Link>
         </div>
         <>
@@ -71,14 +71,14 @@ export default async function UserAccount({ params }) {
         </>
 
         <div className="flex flex-col gap-1">
-          <h3 className="text-sm font-medium text-black">Обо мне</h3>
+          <h3 className="text-sm font-medium text-black">About</h3>
           <p className="ml-4 text-sm font-normal text-sage-11">
             {student.about}
           </p>
         </div>
         <div className="flex flex-col gap-6">
           <div className="flex w-full flex-row items-center gap-9">
-            <h3 className="text-sm font-medium text-black">Опыт работы</h3>
+            <h3 className="text-sm font-medium text-black">Work experience</h3>
             <Link
               href={`/user/${params.id}/add-work-experience`}
               className="text-sm "

@@ -18,7 +18,7 @@ export default function VacancyPage({ params }) {
       }),
     });
 
-    alert("Вы успешно подали заявку");
+    alert("Successfully submited!");
     return res;
   };
 
@@ -63,7 +63,7 @@ export default function VacancyPage({ params }) {
             />
             {session && session.user && session.user.Role === "USER" ? (
               <Button onClick={onSubmitApplication} variant="primary">
-                Подать заявку
+                Submit
               </Button>
             ) : (
               <></>
@@ -90,7 +90,7 @@ export default function VacancyPage({ params }) {
           </section>
           <section className="grid grid-cols-3 ">
             <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-              Заработная плата
+              Salary
             </h6>
             <p className="cols-span-2  text-sm font-normal text-sage-12">
               {vacancy.floorSalary} - {vacancy.ceilingSalary}
@@ -98,14 +98,14 @@ export default function VacancyPage({ params }) {
           </section>
           <section className="grid grid-cols-3">
             <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-              Локация
+              Location
             </h6>
             <p className="cols-span-2 text-sm font-normal text-sage-12">
               {vacancy.location}
             </p>
           </section>
           <section className="grid grid-cols-3">
-            <h6 className="text-sm font-normal text-sage-10">Описание</h6>
+            <h6 className="text-sm font-normal text-sage-10">Description</h6>
             <p className="text-sm font-normal text-sage-12">
               {vacancy.description}
             </p>

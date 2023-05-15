@@ -24,7 +24,7 @@ export default async function Talents() {
   return (
     <div className="w-full">
       <h1 className="mb-4 text-2xl font-medium text-sage-12">
-        Окунитесь в море талантов
+        Dive into the sea of talents
       </h1>
       <section className="grid grid-cols-4 gap-4">
         {students.map((student) => {

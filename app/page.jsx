@@ -13,25 +13,8 @@ export default async function Index() {
 
   return (
     <div className="w-full">
-      {/* <section className="mb-8 flex flex-row">
-        <form className="flex w-full flex-row gap-4">
-          <label htmlFor="search" className="sr-only">
-            For search
-          </label>
-          <Input
-            id="search"
-            name="search"
-            placeholder="Погрузитесь в море вакансий"
-            className="w-full"
-          />
-          <Button variant="secondary" type="submit">
-            Найти
-          </Button>
-        </form>
-      </section> */}
-
       <h1 className="mb-4 text-2xl font-medium text-sage-12">
-        Доступно {vacancies.length} вакансий
+        Dive into the vcnsea
       </h1>
 
       <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -64,11 +47,6 @@ export default async function Index() {
                     {vacancy.floorSalary} ₸ - {vacancy.ceilingSalary} ₸
                   </p>
                 </main>
-                <footer className="flex flex-row flex-wrap gap-1.5">
-                  <div className="rounded-3xl border border-sage-7 bg-sage-3 px-1.5 py-1 text-xs font-normal text-sage-11">
-                    Полная занятость
-                  </div>
-                </footer>
               </div>
             </Link>
           );

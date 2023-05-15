@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Textfield } from "../../components/Textfield";
 
 export default function AiDana({ params }) {
-  const [data, setData] = useState();
+  const [questions, setQuestions] = useState();
   console.log(params);
 
   // const fetchQuestion = useCallback(async (req) => {
@@ -29,8 +29,8 @@ export default function AiDana({ params }) {
 
   return (
     <div>
-      {data &&
-        data.map((question) => {
+      {questions &&
+        questions.map((question) => {
           return (
             <div key={question.number}>
               <p>{question.number + ". " + question.question}</p>
