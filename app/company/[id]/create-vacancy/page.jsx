@@ -23,7 +23,9 @@ export default function CreateVacancy({ params }) {
   };
   return (
     <>
-      <div className="bg-white">
+      <div className="flex flex-col gap-8 bg-white">
+        <h1 className="text-xl font-medium text-black">Manage vacancies</h1>
+
         <form className="flex flex-col gap-6 px-4" action={createVacancyAction}>
           <Input
             id="title"
@@ -35,7 +37,6 @@ export default function CreateVacancy({ params }) {
             required
           />
           <div className="flex flex-col">
-            <h5 className="text-base font-normal text-sage-12">Salary</h5>
             <section className="flex flex-row gap-8">
               <Input
                 id="floorSalary"
@@ -43,7 +44,7 @@ export default function CreateVacancy({ params }) {
                 placeholder="150000"
                 type="text"
                 className="w-full"
-                label="From"
+                label="Salary from"
                 required
               />
               <Input
