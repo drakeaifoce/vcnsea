@@ -3,6 +3,21 @@ import Link from "next/link";
 import { Button } from "../../../components/Button";
 import { prisma } from "../../prisma";
 
+function dateFormater(date, separator) {
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  return day + separator + month + separator + year;
+}
+
 export default async function CompanyAccount({ params }) {
   const company = await prisma.company.findFirst({
     where: {
@@ -14,6 +29,13 @@ export default async function CompanyAccount({ params }) {
           id: true,
           title: true,
           location: true,
+          createdAt: true,
+          floorSalary: false,
+          ceilingSalary: false,
+          description: false,
+          company: false,
+          companyId: false,
+          Applications: false,
         },
       },
     },
@@ -111,7 +133,9 @@ export default async function CompanyAccount({ params }) {
                       </Link>
                     </th>
                     <td className="px-6 py-4">{vacancy.location}</td>
-                    <td className="px-6 py-4">Yesterday</td>
+                    <td className="px-6 py-4">
+                      {dateFormater(vacancy.createdAt, "-")}
+                    </td>
                   </tr>
                 );
               })}

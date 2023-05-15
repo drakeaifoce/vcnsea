@@ -4,6 +4,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "../../../components/Button";
 import { Input } from "../../../components/Input";
+import { Textfield } from "../../../components/Textfield";
 import { prisma } from "../../prisma";
 
 export default function RegisterCompany() {
@@ -43,7 +44,7 @@ export default function RegisterCompany() {
             action={registerCompanyAction}
           >
             <h1 className="text-center text-2xl font-semibold text-teal-12">
-              Dive into talaents <br /> sea
+              Dive into the sea of <br /> talents
             </h1>
 
             <Input
@@ -109,7 +110,7 @@ export default function RegisterCompany() {
               required
             />
 
-            <Input
+            <Textfield
               id="description"
               name="description"
               placeholder="Enter short description of your company"
