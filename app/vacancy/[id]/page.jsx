@@ -1,13 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Button } from "../../../components/Button";
 
 export default function VacancyPage({ params }) {
   const { data: session } = useSession();
-  console.log(session);
   const onSubmitApplication = async () => {
     const res = await fetch(`http://localhost:3000/api/vacancy/${params.id}`, {
       method: "POST",
@@ -65,9 +64,13 @@ export default function VacancyPage({ params }) {
               className="h-20 w-20 rounded-full"
               alt={vacancy.company.company_name}
             />
-            <Button onClick={onSubmitApplication} variant="primary">
-              Подать заявку
-            </Button>
+            {session && session.user && session.user.Role === "USER" ? (
+              <Button onClick={onSubmitApplication} variant="primary">
+                Подать заявку
+              </Button>
+            ) : (
+              <></>
+            )}
           </section>
           <section className="flex flex-col">
             <Link
