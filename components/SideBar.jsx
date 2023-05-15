@@ -1,5 +1,11 @@
 "use client";
-import { ArrowLeft, Fish, SignIn, SuitcaseSimple } from "@phosphor-icons/react";
+import {
+  ArrowLeft,
+  Calendar,
+  Fish,
+  SignIn,
+  SuitcaseSimple,
+} from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -17,13 +23,17 @@ export const SideBar = () => {
       <div className="flex flex-col gap-6">
         <Link href="/">
           <SuitcaseSimple size={20} className="text-sage-12" />
-        </Link>{" "}
+        </Link>
         <Link href="/talents">
           <Fish size={20} className="text-sage-12" />
         </Link>
-        <button onClick={() => router.back()}>
-          <ArrowLeft size={20} className="text-sage-12" />
-        </button>
+        {session && session.user && session.user.id ? (
+          <Link href={`/company/${session.user.id}/interviews`}>
+            <Calendar size={20} className="text-sage-12" />
+          </Link>
+        ) : (
+          <></>
+        )}
       </div>
       {session && session.user && session.user.id ? (
         <button
