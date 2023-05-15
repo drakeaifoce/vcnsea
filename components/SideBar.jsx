@@ -31,7 +31,7 @@ export const SideBar = () => {
             router.push(
               session.user.Role === "USER"
                 ? `/user/${session.user.id}`
-                : `/company${session.user.id}`,
+                : `/company/${session.user.id}`,
             )
           }
         >
