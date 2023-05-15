@@ -1,6 +1,21 @@
 import Link from "next/link";
 import { prisma } from "../../../prisma";
 
+function dateFormater(date, separator) {
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  const year = date.getFullYear();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  return day + separator + month + separator + year;
+}
+
 export default async function ManageVacancies({ params }) {
   const vacancies = await prisma.vacancy.findMany({
     where: {
@@ -53,7 +68,9 @@ export default async function ManageVacancies({ params }) {
                 <td className="px-6 py-4">{vacancy.location}</td>
                 <td className="px-6 py-4">{vacancy.floorSalary}</td>
                 <td className="px-6 py-4">{vacancy.ceilingSalary}</td>
-                <td className="px-6 py-4">Yesterday</td>
+                <td className="px-6 py-4">
+                  {dateFormater(vacancy.createdAt, "-")}
+                </td>
                 <td className="px-6 py-4">
                   <Link
                     href={`/company/${params.id}/manage-vacancies/${vacancy.id}/manage-applicants`}
