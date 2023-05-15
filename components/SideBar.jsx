@@ -27,7 +27,10 @@ export const SideBar = () => {
         <Link href="/talents">
           <Fish size={20} className="text-sage-12" />
         </Link>
-        {session && session.user && session.user.id ? (
+        {session &&
+        session.user &&
+        session.user.id &&
+        session.user.Role === "COMPANY" ? (
           <Link href={`/company/${session.user.id}/interviews`}>
             <Calendar size={20} className="text-sage-12" />
           </Link>
