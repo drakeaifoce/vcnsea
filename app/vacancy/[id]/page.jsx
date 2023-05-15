@@ -2,13 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "../../../components/Button";
 
 export default function VacancyPage({ params }) {
   const { data: session } = useSession();
   const onSubmitApplication = async () => {
-    const res = await fetch(`http://localhost:3000/api/vacancy/${params.id}`, {
+    const res = await fetch(`api/vacancy/${params.id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,32 +24,29 @@ export default function VacancyPage({ params }) {
 
   const [vacancy, setVacancy] = useState(null);
 
-  useEffect(() => {
-    const getVacancy = async () => {
-      try {
-        const res = await fetch(
-          `${process.env.API_URL}/api/vacancy/${params.id}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          },
-        );
+  const getVacancy = useCallback(async () => {
+    try {
+      const res = await fetch(`/api/vacancy/${params.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-        if (res.ok) {
-          const data = await res.json();
-          setVacancy(data);
-        } else {
-          throw new Error("Failed to fetch vacancy data.");
-        }
-      } catch (error) {
-        console.error("Error:", error);
+      if (res.ok) {
+        const body = await res.json();
+        setVacancy(body);
+      } else {
+        throw new Error("Failed to fetch vacancy data.");
       }
-    };
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }, []);
 
+  useEffect(() => {
     getVacancy();
-  }, [params.id]);
+  }, [getVacancy]);
 
   return (
     vacancy && (
