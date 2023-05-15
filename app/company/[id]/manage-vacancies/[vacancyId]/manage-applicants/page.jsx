@@ -28,6 +28,18 @@ export default async function ManageApplicants({ params }) {
     },
   });
 
+  const rejectApplicantAction = async (data) => {
+    "use server";
+    const application = await prisma.application.update({
+      where: {
+        id: Number(data.get("id")),
+      },
+      data: {
+        status: "Rejected",
+      },
+    });
+  };
+
   return (
     <>
       <table className="w-full table-auto text-left text-sm text-sage-10">
@@ -45,6 +57,10 @@ export default async function ManageApplicants({ params }) {
             <th scope="col" className="px-6 py-3">
               Link
             </th>
+            <th scope="col" className="px-6 py-3">
+              Interview
+            </th>
+            <th scope="col" className="px-6 py-3" />
           </tr>
         </thead>
         <tbody>
@@ -72,10 +88,45 @@ export default async function ManageApplicants({ params }) {
                 <td className="px-6 py-4">
                   <Link
                     href={`/profile/user/${application.Student.id}`}
-                    className="text-teal-11 hover:underline"
+                    className="text-sage-11 hover:underline"
                   >
                     View
                   </Link>
+                </td>
+                <td className="px-6 py-4">
+                  {application.status === "Rejected" ||
+                  application.status === "Accepted" ? (
+                    <></>
+                  ) : (
+                    <Link
+                      href={`/company/${params.id}/manage-vacancies/${params.vacancyId}/manage-applicants/appoint-interview/${application.Student.id}`}
+                      className="text-teal-11 hover:underline"
+                    >
+                      Appoint
+                    </Link>
+                  )}
+                </td>
+                <td className="px-6 py-4">
+                  {application.status === "Rejected" ? (
+                    <></>
+                  ) : (
+                    <form action={rejectApplicantAction}>
+                      <input
+                        className="hidden"
+                        value={application.id}
+                        name="id"
+                        id="id"
+                        type="text"
+                        readOnly
+                      />
+                      <button
+                        className="text-red-11 hover:underline"
+                        type="submit"
+                      >
+                        Reject
+                      </button>
+                    </form>
+                  )}
                 </td>
               </tr>
             );
