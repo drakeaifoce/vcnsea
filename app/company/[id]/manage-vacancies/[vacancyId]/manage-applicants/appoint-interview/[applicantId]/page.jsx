@@ -16,7 +16,7 @@ export default async function AppointInterview({ params }) {
         vacancyId: Number(params.vacancyId),
       },
     });
-    redirect(`/company/${params.id}interviews`);
+    redirect(`/company/${params.id}/interviews`);
   };
   return (
     <div>
