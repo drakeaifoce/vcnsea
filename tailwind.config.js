@@ -32,6 +32,7 @@ module.exports = {
         primary: "#67B585",
         hover: "#3D836E",
       },
+      orange: "#FF7F50"
     },
   },
   plugins: [require("@tailwindcss/forms")],
