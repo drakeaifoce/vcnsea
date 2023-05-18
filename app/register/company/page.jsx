@@ -38,15 +38,14 @@ export default function RegisterCompany() {
         className="h-20 w-full object-cover"
       />
       <>
-        <div className="mt-8 lg:px-96">
+        <div className="bg-orange">
           <form
-            className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20"
+            className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16"
             action={registerCompanyAction}
           >
-            <h1 className="text-center text-2xl font-semibold text-teal-12">
-              Dive into the sea of <br /> talents
+            <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+              Dive into the sea of talents
             </h1>
-
             <Input
               id="email"
               name="email"
@@ -131,9 +130,9 @@ export default function RegisterCompany() {
             <Button variant="primary" type="submit">
               Register
             </Button>
-            <div className="text-sm text-teal-12">
+            <div className="text-lg">
               Already have an account?{" "}
-              <Link href="/login" className="font-semibold">
+              <Link href="/login" className="font-semibold hover:underline">
                 Login
               </Link>
             </div>
