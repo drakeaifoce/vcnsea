@@ -1,20 +1,6 @@
 import Link from "next/link";
 import { prisma } from "../../../prisma";
-
-function dateFormater(date, separator) {
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  if (day < 10) {
-    day = "0" + day;
-  }
-  if (month < 10) {
-    month = "0" + month;
-  }
-
-  return day + separator + month + separator + year;
-}
+import { dateFormater } from "../../../utils";
 
 export default async function AppliedVacancies({ params }) {
   const applications = await prisma.application.findMany({
@@ -46,43 +32,44 @@ export default async function AppliedVacancies({ params }) {
 
   return (
     <div className="flex w-full flex-col gap-8">
-      <h1 className="text-xl font-medium text-black">Applied vacancies</h1>
-      <section className="grid grid-cols-3 gap-4">
+      <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+        Applied vacancies
+      </h1>
+      <section className="my-4 grid grid-cols-1 gap-x-2 gap-y-4 md:my-6 md:grid-cols-1 md:gap-x-4 md:gap-y-6 lg:my-8 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-8 xl:my-10 xl:gap-x-8 xl:gap-y-10">
         {applications.map((application) => {
           return (
-            <div
-              key={application.id}
-              className="rounded-xl border border-sage-7 bg-sage-2"
-            >
-              <div className="flex flex-col gap-4 p-4">
-                <header className="flex flex-row items-start justify-between">
-                  <div className="flex flex-col">
+            <div key={application.id} className="border bg-white">
+              <div className="flex flex-col gap-6 p-4 md:p-6 lg:p-8 xl:p-10">
+                <header className="flex flex-row justify-between">
+                  <Link
+                    href={`/vacancy/${application.Vacancy.id}`}
+                    className="w-3/4 text-sm font-bold uppercase hover:underline sm:w-fit sm:text-base md:w-full md:text-lg"
+                  >
+                    {application.Vacancy.title}
+                  </Link>
+                </header>
+                <main className="flex flex-row items-center justify-between">
+                  <address className="w-fit border border-black bg-green-primary/80  px-2.5 py-2 text-xs font-normal md:text-base lg:px-5 lg:py-4 lg:text-lg">
+                    {dateFormater(application.Vacancy.createdAt, "-")}
+                  </address>
+                  <address className="text-sm md:text-base lg:text-lg">
                     <Link
-                      href={`/vacancy/${application.Vacancy.id}`}
-                      className="text-lg font-medium text-black hover:underline"
-                    >
-                      {application.Vacancy.title}
-                    </Link>
-                    <p className="text-sm font-normal text-sage-11">
-                      {dateFormater(application.Vacancy.createdAt, "-")}
-                    </p>
-                  </div>
-                  <div className="flex flex-col">
-                    <Link
-                      className="text-lg font-medium text-sage-12 hover:underline"
+                      className="hover:underline"
                       href={`/profile/company/${application.Vacancy.company.id}`}
                     >
                       {application.Vacancy.company.company_name}
                     </Link>
-                    <p className="text-sm font-normal text-sage-11">
-                      {application.Vacancy.location}
-                    </p>
-                  </div>
-                </header>
-                <section>
-                  <p className="rounded-lg bg-teal-6 p-4 text-sm font-normal text-sage-11">
-                    Status: {application.status}
-                  </p>
+                    , {application.Vacancy.location}
+                  </address>
+                </main>
+                <section
+                  className={`flex justify-center border border-black ${
+                    application.status === "Pending"
+                      ? "bg-yellow-primary/80"
+                      : "bg-red-primary/80"
+                  }  px-2.5 py-2 text-xs font-normal md:text-base lg:px-5 lg:py-4 lg:text-lg`}
+                >
+                  Status: {application.status}
                 </section>
               </div>
             </div>
