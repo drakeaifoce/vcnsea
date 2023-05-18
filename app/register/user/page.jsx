@@ -31,64 +31,62 @@ export default function RegisterUser() {
         src="/ocean_wide.jpg"
         className="h-20 w-full object-cover"
       />
-      <>
-        <div className="mt-8 lg:px-96">
-          <form
-            className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20"
-            action={registerUserAction}
-          >
-            <h1 className="text-center text-2xl font-semibold text-teal-12">
-              Dive into the <br /> vcnsea
-            </h1>
+      <div className="bg-orange">
+        <form
+          className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16"
+          action={registerUserAction}
+        >
+          <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+            Dive into the vcnsea
+          </h1>
 
-            <Input
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              type="email"
-              className="w-full"
-              required
-            />
+          <Input
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            type="email"
+            className="w-full"
+            required
+          />
 
-            <Input
-              id="firstName"
-              name="firstName"
-              placeholder="Enter your first name"
-              type="text"
-              className="w-full"
-              required
-            />
+          <Input
+            id="firstName"
+            name="firstName"
+            placeholder="Enter your first name"
+            type="text"
+            className="w-full"
+            required
+          />
 
-            <Input
-              id="secondName"
-              name="secondName"
-              placeholder="Enter your second name"
-              type="text"
-              className="w-full"
-              required
-            />
+          <Input
+            id="secondName"
+            name="secondName"
+            placeholder="Enter your second name"
+            type="text"
+            className="w-full"
+            required
+          />
 
-            <Input
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              type="password"
-              className="w-full"
-              required
-            />
+          <Input
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            type="password"
+            className="w-full"
+            required
+          />
 
-            <Button variant="primary" type="submit">
-              Register
-            </Button>
-            <div className="text-sm text-teal-12">
-              Already have an account??{" "}
-              <Link href="/login" className="font-semibold">
-                Login
-              </Link>
-            </div>
-          </form>
-        </div>
-      </>
+          <Button variant="primary" type="submit">
+            Register
+          </Button>
+          <div className="text-lg">
+            Already have an account?{" "}
+            <Link href="/login" className="font-semibold hover:underline">
+              Login
+            </Link>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
