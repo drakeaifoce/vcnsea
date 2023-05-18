@@ -66,7 +66,7 @@ export default function Login() {
           <div className="text-lg">
             Do not have an account yet?{" "}
             <Link href="/register" className="font-semibold hover:underline">
-              Login
+              Register
             </Link>
           </div>
         </form>
