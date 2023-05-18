@@ -8,7 +8,7 @@ export const Button = forwardRef(
         onClick={onClick}
         ref={ref}
         className={clsx(
-          "whitespace-nowrap border border-solid px-2 py-1 text-sm uppercase md:px-5 md:py-2.5 md:text-base lg:px-10 lg:py-5 lg:text-lg",
+          "whitespace-nowrap px-2 py-1 text-sm uppercase md:px-5 md:py-2.5 md:text-base lg:px-10 lg:py-5 lg:text-lg",
           {
             "bg-green-primary text-white hover:bg-green-hover":
               variant === "primary",
