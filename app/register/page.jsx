@@ -1,25 +1,25 @@
 import Link from "next/link";
 
-export default function Register() {
+export default function RegisterChoice() {
   return (
-    <>
-      <div className="mt-20 flex flex-col items-center gap-8 lg:px-96">
-        <h2 className="text-3xl font-semibold text-teal-12">Who are you?</h2>
-        <div className="flex flex-row justify-between">
-          <Link
-            href="/register/user"
-            className="w-96 bg-teal-3 px-4 py-20 text-center text-3xl"
-          >
-            Talent
-          </Link>
-          <Link
-            href="/register/company"
-            className="w-96 bg-teal-9 px-4 py-20 text-center text-3xl"
-          >
-            Talent seeker
-          </Link>
-        </div>
+    <div className=" flex flex-col items-center">
+      <h1 className="my-20 text-xl font-extrabold sm:text-2xl md:my-32 md:text-3xl lg:text-4xl xl:text-5xl">
+        Who are you?
+      </h1>
+      <div className="flex flex-row justify-between gap-20">
+        <Link
+          href="/register/user"
+          className="text-base font-semibold hover:underline sm:text-lg md:text-xl lg:text-3xl"
+        >
+          Talent
+        </Link>
+        <Link
+          href="/register/company"
+          className="text-base font-semibold hover:underline sm:text-lg md:text-xl  lg:text-3xl"
+        >
+          Talent seeker
+        </Link>
       </div>
-    </>
+    </div>
   );
 }
