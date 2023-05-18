@@ -28,13 +28,15 @@ export default async function InterviewAppointments({ params }) {
 
   return (
     <div className="flex flex-col gap-8">
-      <h1 className="text-xl font-medium text-black">Scheduled interviews</h1>
+      <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+        Scheduled interviews
+      </h1>
       <section className="grid grid-cols-4 gap-4">
         {interviews.map((interview) => {
           return (
             <div
               key={interview.id}
-              className="rounded-xl border border-sage-7 bg-sage-2"
+              className="border-sage-7 bg-sage-2 rounded-xl border"
             >
               <div className="flex flex-col gap-4 p-4">
                 <header className="flex flex-col gap-2">
@@ -45,7 +47,7 @@ export default async function InterviewAppointments({ params }) {
                     {interview.Vacancy.title}
                   </Link>
                   <Link
-                    className="text-sm font-normal text-sage-11 hover:underline"
+                    className="text-sage-11 text-sm font-normal hover:underline"
                     href={`/profile/company/${interview.company.id}`}
                   >
                     {interview.company.company_name}
@@ -53,16 +55,16 @@ export default async function InterviewAppointments({ params }) {
                 </header>
                 <div className="flex flex-row justify-between">
                   <div className="flex flex-row gap-2">
-                    <p className="text-sm font-normal text-sage-11">
+                    <p className="text-sage-11 text-sm font-normal">
                       {interview.date}
                     </p>
-                    <p className="text-sm font-normal text-sage-11">
+                    <p className="text-sage-11 text-sm font-normal">
                       {interview.time}
                     </p>
                   </div>
                   <Link
                     href={interview.link}
-                    className="text-sm font-normal text-teal-10 hover:underline"
+                    className="text-teal-10 text-sm font-normal hover:underline"
                   >
                     Join meeting
                   </Link>
