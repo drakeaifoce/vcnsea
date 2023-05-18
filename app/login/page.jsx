@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { useRef } from "react";
 import { Button } from "../../components/Button";
@@ -28,9 +29,9 @@ export default function Login() {
         src="/wave_wide.jpg"
         className="h-20 w-full object-cover"
       />
-      <div className="mt-20 lg:px-96">
-        <form className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20">
-          <h1 className="text-center text-2xl font-semibold text-teal-12">
+      <div className="bg-orange">
+        <form className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16">
+          <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             Sign in account
           </h1>
 
@@ -59,9 +60,15 @@ export default function Login() {
             required
             onChange={(e) => (passwordField.current = e.target.value)}
           />
-          <Button variant="secondary" type="button" onClick={onSubmit}>
+          <Button variant="primary" type="button" onClick={onSubmit}>
             Sign in
           </Button>
+          <div className="text-lg">
+            Do not have an account yet?{" "}
+            <Link href="/register" className="font-semibold hover:underline">
+              Login
+            </Link>
+          </div>
         </form>
       </div>
     </>
