@@ -1,60 +1,33 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    "colors": {
-      "current": "currentColor",
-      "transparent": "transparent",
-      "black": "#000000",
-      "white": "#ffffff",
-      "teal": {
-        "1": "#fafefd",
-        "2": "#f1fcfa",
-        "3": "#e7f9f5",
-        "4": "#d9f3ee",
-        "5": "#c7ebe5",
-        "6": "#afdfd7",
-        "7": "#8dcec3",
-        "8": "#53b9ab",
-        "9": "#12a594",
-        "10": "#0e9888",
-        "11": "#067a6f",
-        "12": "#10302b"
+    colors: {
+      current: "currentColor",
+      transparent: "transparent",
+      black: "#090909",
+      white: "#F5F5F5",
+      gray: "#BBB9BA",
+      blue: {
+        1: "#CAF0F8",
+        2: "#ADE8F4",
+        3: "#90E0EF",
+        4: "#48CAE4",
+        5: "#00B4D8",
+        6: "#0096C7",
+        7: "#0077B6",
+        8: "#023E8A",
+        9: "#03045E",
       },
-      "red": {
-        "1": "#fffcfc",
-        "2": "#fff8f8",
-        "3": "#ffefef",
-        "4": "#ffe5e5",
-        "5": "#fdd8d8",
-        "6": "#f9c6c6",
-        "7": "#f3aeaf",
-        "8": "#eb9091",
-        "9": "#e5484d",
-        "10": "#dc3d43",
-        "11": "#cd2b31",
-        "12": "#381316"
+      yellow: {
+        1: "#FFEF81",
       },
-      "sage": {
-        "1": "#fbfdfc",
-        "2": "#f8faf9",
-        "3": "#f1f4f3",
-        "4": "#ecefed",
-        "5": "#e6e9e8",
-        "6": "#dfe4e2",
-        "7": "#d7dcda",
-        "8": "#c2c9c6",
-        "9": "#8a918e",
-        "10": "#808784",
-        "11": "#6a716e",
-        "12": "#111c18"
-      }
-    }
+      red: {},
+      green: {},
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms')
-  ],
-}
+  plugins: [require("@tailwindcss/forms")],
+};
