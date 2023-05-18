@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { prisma } from "./prisma";
+import { numberWithSpaces } from "./utils";
 
 export default async function Index() {
   const vacancies = await prisma.vacancy.findMany({
@@ -12,43 +13,62 @@ export default async function Index() {
   });
 
   return (
-    <div className="w-full">
-      <h1 className="mb-4 text-2xl font-medium text-sage-12">
-        Dive into the vcnsea
+    <div className="text-black">
+      <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+        Dive into the sea of vacancies
       </h1>
 
-      <section className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <section className="my-4 grid grid-cols-1 gap-y-4 md:my-6 md:gap-y-6 lg:my-8 lg:gap-y-8 xl:my-10 xl:gap-y-10">
         {vacancies.map((vacancy) => {
           return (
-            <Link
+            <article
               key={vacancy.id}
               href={`/vacancy/${vacancy.id}`}
-              className="rounded-xl border border-sage-7 bg-sage-2"
+              className="border bg-white"
             >
-              <div className="flex flex-col gap-3 p-4">
+              <div className="flex flex-col gap-2.5 p-4 md:p-6 lg:p-8 xl:p-10">
                 <header className="flex flex-row justify-between">
-                  <Image
-                    src={`https://ui-avatars.com/api/name=${vacancy.company.company_name}`}
-                    alt={vacancy.companyName}
-                    className="h-6 w-6 rounded-full"
-                    height={0}
-                    width={0}
-                    unoptimized
-                  />
-                  <p className="text-base font-normal text-sage-11">
-                    {vacancy.company.company_name}, {vacancy.location}
-                  </p>
-                </header>
-                <main className="flex flex-col gap-1">
-                  <h3 className="text-xl font-medium text-sage-12">
+                  <Link
+                    href={`/vacancy/${vacancy.id}`}
+                    className="w-3/4 text-lg font-bold uppercase hover:underline sm:w-fit sm:text-xl md:text-2xl lg:text-3xl"
+                  >
                     {vacancy.title}
-                  </h3>
-                  <p className="text-base font-medium text-sage-11">
-                    {vacancy.floorSalary} ₸ - {vacancy.ceilingSalary} ₸
-                  </p>
+                  </Link>
+                  <div className="flex flex-col items-center md:flex-row-reverse md:gap-4">
+                    <Image
+                      src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${vacancy.company.company_name}`}
+                      alt={vacancy.company.company_name}
+                      className="hidden rounded-full md:inline-block"
+                      width={32}
+                      height={32}
+                      unoptimized
+                    />
+                    <Link
+                      href={`/profile/company/${vacancy.company.id}`}
+                      className="text-base font-semibold hover:underline sm:text-lg md:text-xl lg:text-2xl"
+                    >
+                      {vacancy.company.company_name}
+                    </Link>
+                  </div>
+                </header>
+                <main className="flex flex-col">
+                  <section className="flex flex-row items-center justify-between text-sm font-medium md:text-base lg:text-lg">
+                    <p>
+                      {numberWithSpaces(vacancy.floorSalary)} ₸ -{" "}
+                      {numberWithSpaces(vacancy.ceilingSalary)} ₸
+                    </p>
+                    <address className="not-italic">{vacancy.location}</address>
+                  </section>
                 </main>
+                <footer className="flex flex-row justify-end">
+                  <Link href={`/vacancy/${vacancy.id}`} className="uppercase">
+                    <Button variant="primary" type="button">
+                      Apply Now
+                    </Button>
+                  </Link>
+                </footer>
               </div>
-            </Link>
+            </article>
           );
         })}
       </section>
