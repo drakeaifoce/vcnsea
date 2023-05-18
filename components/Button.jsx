@@ -8,9 +8,9 @@ export const Button = forwardRef(
         onClick={onClick}
         ref={ref}
         className={clsx(
-          "whitespace-nowrap rounded-md border border-solid px-4 py-2 text-base font-medium",
+          "whitespace-nowrap border border-solid px-2 py-1 text-sm uppercase md:px-5 md:py-2.5 md:text-base lg:px-10 lg:py-5 lg:text-lg",
           {
-            "border-teal-7 bg-teal-9 text-white hover:bg-teal-10":
+            "bg-green-primary text-white hover:bg-green-hover":
               variant === "primary",
           },
           {
@@ -22,11 +22,11 @@ export const Button = forwardRef(
               variant === "tertiary",
           },
           {
-            "border-red-7 bg-red-9 text-white hover:bg-red-10":
+            "border-red-7 bg-red-9 hover:bg-red-10 text-white":
               variant === "danger",
           },
           {
-            "border-0 bg-transparent text-sage-11 hover:bg-sage-4":
+            "text-sage-11 hover:bg-sage-4 border-0 bg-transparent":
               variant === "transparent",
           },
           className,

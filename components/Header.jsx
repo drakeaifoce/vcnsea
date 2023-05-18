@@ -9,7 +9,7 @@ export const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="bg-yellow-1">
+    <header className="bg-yellow-primary">
       <nav className="container mx-auto flex flex-row items-center  justify-between  px-4 py-5">
         <Link href="/">
           <Image src="/vcnsea.svg" alt="vcnsea icon" width={84} height={14} />
@@ -42,27 +42,27 @@ export const Header = () => {
                 Interviews
               </Link>
             </>
-          ) : (
-            session &&
+          ) : (session &&
             session.user &&
             session.user.id &&
-            session.user.Role === "COMPANY" && (
-              <>
-                <Link
-                  href={`/company/${session.user.id}/manage-vacancies`}
-                  className="hidden text-base font-bold text-black sm:inline-block"
-                >
-                  Manage vacancies
-                </Link>
-                <Link
-                  href={`/company/${session.user.id}/interviews`}
-                  className="text-base font-bold text-black"
-                >
-                  Interviews
-                </Link>
-              </>
-            )
-          )}
+            session.user.Role === "COMPANY" ? (
+            <>
+              <Link
+                href={`/company/${session.user.id}/manage-vacancies`}
+                className="hidden text-base font-bold text-black sm:inline-block"
+              >
+                Manage vacancies
+              </Link>
+              <Link
+                href={`/company/${session.user.id}/interviews`}
+                className="text-base font-bold text-black"
+              >
+                Interviews
+              </Link>
+            </>
+          ) : (
+            <></>
+          ))}
         </div>
 
         {session && session.user ? (
