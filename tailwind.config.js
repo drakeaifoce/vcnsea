@@ -23,10 +23,15 @@ module.exports = {
         9: "#03045E",
       },
       yellow: {
-        1: "#FFEF81",
+        primary: "#FFEF81",
       },
-      red: {},
-      green: {},
+      red: {
+        primary: "#F88379",
+      },
+      green: {
+        primary: "#67B585",
+        hover: "#3D836E",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
