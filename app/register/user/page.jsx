@@ -31,7 +31,7 @@ export default function RegisterUser() {
         src="/ocean_wide.jpg"
         className="h-20 w-full object-cover"
       />
-      <div className="bg-orange">
+      <div className="bg-orange-primary">
         <form
           className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16"
           action={registerUserAction}

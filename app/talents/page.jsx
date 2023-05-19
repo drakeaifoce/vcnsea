@@ -58,7 +58,7 @@ export default async function Talents() {
                   </section>
                 </header>
                 {student.quote && (
-                  <p className="w-3/4 border border-black bg-orange/80  px-2.5 py-2 text-xs font-normal md:w-full md:text-base lg:px-5 lg:py-4 lg:text-lg">
+                  <p className="w-3/4 border border-black bg-orange-primary  px-2.5 py-2 text-xs font-normal md:w-full md:text-base lg:px-5 lg:py-4 lg:text-lg">
                     {student.quote}
                   </p>
                 )}
