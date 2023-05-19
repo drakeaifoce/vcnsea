@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "../../../components/Button";
+import { numberWithSpaces } from "../../utils";
 
 export default function VacancyPage({ params }) {
   const { data: session } = useSession();
@@ -52,10 +53,10 @@ export default function VacancyPage({ params }) {
   return (
     vacancy && (
       <>
-        <div className="flex flex-col gap-4 px-4">
+        <div className=":sm:gap-6 flex flex-col gap-4 px-4 md:gap-8 lg:gap-10">
           <section className="flex flex-row items-center justify-between">
             <Image
-              src={`https://ui-avatars.com/api/name=${vacancy.company.company_name}`}
+              src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${vacancy.company.company_name}`}
               unoptimized
               width={0}
               height={0}
@@ -63,7 +64,7 @@ export default function VacancyPage({ params }) {
               alt={vacancy.company.company_name}
             />
             {session && session.user && session.user.Role === "USER" ? (
-              <div className="flex flex-row items-center gap-4">
+              <div className="flex flex-col items-center gap-4 md:flex-row">
                 <Link
                   href={{
                     pathname: "/ar-ai/",
@@ -75,12 +76,12 @@ export default function VacancyPage({ params }) {
                     type="button"
                     variant="secondary"
                   >
-                    <p>Try sample interview with AR-AI</p>{" "}
+                    <p>AR-AI test</p>{" "}
                     <Robot size={24} className="text-current" />
                   </Button>
                 </Link>
                 <Button onClick={onSubmitApplication} variant="primary">
-                  Submit
+                  Apply
                 </Button>
               </div>
             ) : (
@@ -90,41 +91,38 @@ export default function VacancyPage({ params }) {
           <section className="flex flex-col">
             <Link
               href={`/profile/company/${vacancy.company.id}`}
-              className="text-sm font-normal text-sage-10 hover:underline"
+              className=" text-sm  font-normal hover:underline md:text-base lg:text-lg"
             >
               {vacancy.company.company_name}
             </Link>
-            <h1 className="text-xl font-normal text-sage-12">
+            <h1 className="text-lg font-bold uppercase sm:text-xl md:text-2xl lg:text-3xl">
               {vacancy.title}
             </h1>
           </section>
-          <section className="grid grid-cols-3 ">
-            <h6 className="cols-span-1 text-sm font-normal text-sage-10">
+          <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+            <h6 className="cols-span-1 font-medium ">
               {vacancy.company.position}
             </h6>
-            <p className="cols-span-2 text-sm font-normal text-sage-12">
+            <p className="cols-span-1 md:cols-span-2font-normal ">
               {vacancy.company.firstName + " " + vacancy.company.secondName}
             </p>
           </section>
-          <section className="grid grid-cols-3 ">
-            <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-              Salary
-            </h6>
-            <p className="cols-span-2  text-sm font-normal text-sage-12">
-              {vacancy.floorSalary} - {vacancy.ceilingSalary}
+          <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+            <h6 className="cols-span-1 font-medium">Salary</h6>
+            <p className="cols-span-1 md:cols-span-2  font-normal">
+              {numberWithSpaces(vacancy.floorSalary)} -{" "}
+              {numberWithSpaces(vacancy.ceilingSalary)}
             </p>
           </section>
-          <section className="grid grid-cols-3">
-            <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-              Location
-            </h6>
-            <p className="cols-span-2 text-sm font-normal text-sage-12">
+          <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+            <h6 className="cols-span-1 font-medium">Location</h6>
+            <p className="cols-span-1 md:cols-span-2 font-normal">
               {vacancy.location}
             </p>
           </section>
-          <section className="grid grid-cols-3">
-            <h6 className="text-sm font-normal text-sage-10">Description</h6>
-            <p className="text-sm font-normal text-sage-12">
+          <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+            <h6 className="cols-span-1 font-medium">Description</h6>
+            <p className="cols-span-1 md:cols-span-2font-normal">
               {vacancy.description}
             </p>
           </section>

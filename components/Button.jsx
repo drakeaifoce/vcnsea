@@ -14,7 +14,7 @@ export const Button = forwardRef(
               variant === "primary",
           },
           {
-            "border-teal-7 bg-teal-4 text-teal-11 hover:bg-teal-5":
+            " bg-purple-primary text-white hover:bg-purple-hover":
               variant === "secondary",
           },
           {

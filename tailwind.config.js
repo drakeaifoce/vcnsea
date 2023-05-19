@@ -38,8 +38,10 @@ module.exports = {
       },
       green: {
         primary: "#67B585",
+        secondary: "#80C99B",
         hover: "#3D836E",
         focus: "#286F5A",
+        secondaryHover: "#6CB38A",
       },
       orange: {
         primary: "#FF7F50",
