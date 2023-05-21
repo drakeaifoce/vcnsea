@@ -67,8 +67,8 @@ export default function Index() {
         </Button>
       </div>
 
-      <div className="my-4 flex flex-row gap-x-4  md:gap-x-6 lg:my-8 lg:gap-x-8 xl:my-10 xl:gap-x-10">
-        <section className=" max-h-fit">
+      <div className="my-4 flex flex-col gap-x-4 gap-y-4 md:flex-row  md:gap-x-6 lg:my-8 lg:gap-x-8 xl:my-10 xl:gap-x-10">
+        <section className="max-h-fit">
           <div className="border bg-orange-primary p-4 md:p-6 lg:p-8 xl:p-10">
             <div className="flex flex-row items-end gap-1">
               <Input
