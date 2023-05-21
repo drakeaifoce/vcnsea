@@ -72,7 +72,7 @@ export default async function CompanyProfile({ params }) {
                 <th scope="col" className="px-6 py-3">
                   Position
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="hidden px-6 py-3 md:inline-block">
                   Location
                 </th>
                 <th scope="col" className="px-6 py-3 text-left">
@@ -89,10 +89,7 @@ export default async function CompanyProfile({ params }) {
                       index % 2 === 0 || index === 0 ? "bg-blue-1" : ""
                     }`}
                   >
-                    <th
-                      scope="row"
-                      className="whitespace-nowrap px-6 py-4 font-medium"
-                    >
+                    <th scope="row" className="px-6 py-4 font-medium">
                       <Link
                         href={`/vacancy/${vacancy.id}`}
                         className="hover:underline"
@@ -100,7 +97,9 @@ export default async function CompanyProfile({ params }) {
                         {vacancy.title}
                       </Link>
                     </th>
-                    <td className="px-6 py-4">{vacancy.location}</td>
+                    <td className="hidden px-6 py-4 md:inline-block">
+                      {vacancy.location}
+                    </td>
                     <td className="px-6 py-4">
                       {dateFormater(vacancy.createdAt, "-")}
                     </td>

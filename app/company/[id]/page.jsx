@@ -2,21 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../../../components/Button";
 import { prisma } from "../../prisma";
-
-function dateFormater(date, separator) {
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  const year = date.getFullYear();
-
-  if (day < 10) {
-    day = "0" + day;
-  }
-  if (month < 10) {
-    month = "0" + month;
-  }
-
-  return day + separator + month + separator + year;
-}
+import { dateFormater } from "../../utils";
 
 export default async function CompanyAccount({ params }) {
   const company = await prisma.company.findFirst({
@@ -43,27 +29,27 @@ export default async function CompanyAccount({ params }) {
 
   return (
     <>
-      <div className="flex flex-col gap-4 px-4">
-        <div className="flex flex-row items-center justify-between">
+      <div className=":sm:gap-6 flex flex-col gap-4 px-4 text-black md:gap-8 lg:gap-10">
+        <div className="flex flex-col items-center gap-8 md:flex-row">
           <div className="flex flex-row items-center gap-8">
             <Image
               alt={company.company_name}
-              src={`https://ui-avatars.com/api/name=${company.company_name}`}
+              src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${company.company_name}`}
               unoptimized
               width={0}
               height={0}
               className="h-20 w-20 rounded-full"
             />
             <>
-              <h1 className="text-xl font-medium text-black">
+              <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
                 {company.company_name}
               </h1>
-              <h2 className="text-sm font-normal text-sage-11">
+              <h2 className="text-sm font-normal md:text-base lg:text-lg">
                 {company.city}
               </h2>
             </>
           </div>
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-col items-center gap-4 lg:flex-row">
             <Link href={`/company/${params.id}/create-vacancy`}>
               <Button variant="primary">Create vacancy</Button>
             </Link>
@@ -71,45 +57,39 @@ export default async function CompanyAccount({ params }) {
               <Button variant="secondary">Manage vacancies</Button>
             </Link>
             <Link href={`/company/${params.id}/interviews`}>
-              <Button variant="transparent">Scheduled interviews</Button>
+              <Button variant="primary">Scheduled interviews</Button>
             </Link>
           </div>
         </div>
-        <section className="grid grid-cols-3 ">
-          <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-            {company.position}
-          </h6>
-          <p className="cols-span-2 text-sm font-normal text-sage-12">
+        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+          <h6 className="cols-span-1 font-medium ">{company.position}</h6>
+          <p className="cols-span-1 md:cols-span-2 font-normal ">
             {company.firstName + " " + company.secondName}
           </p>
         </section>
-        <section className="grid grid-cols-3 ">
-          <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-            Description
-          </h6>
-          <p className="cols-span-2 text-sm font-normal text-sage-12">
+        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+          <h6 className="cols-span-1 font-medium ">Description</h6>
+          <p className="cols-span-1 md:cols-span-2 font-normal ">
             {company.description}
           </p>
         </section>
-        <section className="grid grid-cols-3 ">
-          <h6 className="cols-span-1 text-sm font-normal text-sage-10">
-            Contacts
-          </h6>
-          <p className="cols-span-2 text-sm font-normal text-sage-12">
+        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+          <h6 className="cols-span-1 font-medium ">Contacts</h6>
+          <p className="cols-span-1 md:cols-span-2 font-normal ">
             {company.email}
           </p>
         </section>
         <secion className="flex flex-col gap-4">
-          <h5 className="text-base font-medium text-sage-12">
+          <h5 className="text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">
             Available positions
           </h5>
-          <table className="w-full table-auto text-left text-sm text-sage-10">
-            <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
+          <table className="w-full table-auto text-left text-sm sm:text-base md:text-lg">
+            <thead className="border bg-orange-primary font-medium uppercase">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Position
                 </th>
-                <th scope="col" className="px-6 py-3">
+                <th scope="col" className="hidden px-6 py-3 md:inline-block">
                   Location
                 </th>
                 <th scope="col" className="px-6 py-3 text-left">
@@ -118,15 +98,17 @@ export default async function CompanyAccount({ params }) {
               </tr>
             </thead>
             <tbody>
-              {company.Vacancies.map((vacancy) => {
+              {company.Vacancies.map((vacancy, index) => {
                 return (
                   <tr
                     key={vacancy.id}
-                    className="border-b border-sage-6 bg-sage-2"
+                    className={`border-b ${
+                      index % 2 === 0 || index === 0 ? "bg-blue-1" : ""
+                    }`}
                   >
                     <th
                       scope="row"
-                      className="text- whitespace-nowrap px-6 py-4 font-medium text-sage-12"
+                      className="text- text-sage-12 whitespace-nowrap px-6 py-4 font-medium"
                     >
                       <Link
                         href={`/vacancy/${vacancy.id}`}
@@ -135,7 +117,9 @@ export default async function CompanyAccount({ params }) {
                         {vacancy.title}
                       </Link>
                     </th>
-                    <td className="px-6 py-4">{vacancy.location}</td>
+                    <td className="hidden px-6 py-4 md:inline-block">
+                      {vacancy.location}
+                    </td>
                     <td className="px-6 py-4">
                       {dateFormater(vacancy.createdAt, "-")}
                     </td>
