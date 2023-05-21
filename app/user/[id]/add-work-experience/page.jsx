@@ -25,7 +25,9 @@ export default async function AddWorkExperience({ params }) {
   return (
     <div>
       <form className="flex flex-col gap-9" action={addWorkExperienceAction}>
-        <h1 className="text-xl font-medium text-black">Add work experience</h1>
+        <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+          Add work experience
+        </h1>
         <Input
           id="position"
           name="position"
@@ -34,7 +36,7 @@ export default async function AddWorkExperience({ params }) {
           type="text"
           required
         />
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           <Input
             id="company_name"
             name="company_name"
@@ -60,7 +62,7 @@ export default async function AddWorkExperience({ params }) {
           type="text"
           required
         />
-        <div className="flex flex-row gap-4">
+        <div className="flex flex-col gap-4 md:flex-row">
           <Input
             id="start_date"
             name="start_date"
