@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 import { Button } from "../../../components/Button";
 import { prisma } from "../../prisma";
 
@@ -59,9 +60,11 @@ export default async function UserAccount({ params }) {
               {student.email ? student.email : " "}
             </address>
           </>
-          <Link href={`/user/${params.id}/edit`}>
-            <Button variant="primary">Edit</Button>
-          </Link>
+          <div className="flex flex-row gap-4">
+            <Link href={`/user/${params.id}/edit`}>
+              <Button variant="primary">Edit</Button>
+            </Link>
+          </div>
         </div>
         <>
           {student.quote && (
@@ -108,19 +111,21 @@ export default async function UserAccount({ params }) {
                       <h4 className="col-span-1 text-sm font-normal md:text-base lg:text-lg">
                         {experience.title}
                       </h4>
-                      <Link
-                        href={experience.company_link}
-                        className="text-base hover:underline md:text-lg lg:text-xl"
-                      >
-                        {experience.company_name}
-                      </Link>
-                      <address className="not-italic">
-                        {experience.city}
-                      </address>
+                      <div className="col-span-1 flex flex-col gap-2 text-sm font-normal md:col-span-2 md:text-base lg:text-lg">
+                        <Link
+                          href={experience.company_link}
+                          className="text-base hover:underline md:text-lg lg:text-xl"
+                        >
+                          {experience.company_name}
+                        </Link>
+                        <address className="not-italic">
+                          {experience.city}
+                        </address>
+                      </div>
+                      <p className="text-sage-11 text-sm font-normal">
+                        {experience.description}
+                      </p>
                     </div>
-                    <p className="text-sage-11 text-sm font-normal">
-                      {experience.description}
-                    </p>
                   </div>
                 </div>
               );
