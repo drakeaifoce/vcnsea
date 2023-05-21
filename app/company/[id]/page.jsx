@@ -106,10 +106,7 @@ export default async function CompanyAccount({ params }) {
                       index % 2 === 0 || index === 0 ? "bg-blue-1" : ""
                     }`}
                   >
-                    <th
-                      scope="row"
-                      className="text- text-sage-12 whitespace-nowrap px-6 py-4 font-medium"
-                    >
+                    <th scope="row" className="px-6 py-4 font-medium">
                       <Link
                         href={`/vacancy/${vacancy.id}`}
                         className="hover:underline"
