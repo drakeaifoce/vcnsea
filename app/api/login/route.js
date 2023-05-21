@@ -4,7 +4,7 @@ import { prisma } from "../../prisma";
 
 export async function POST(request) {
   const body = await request.json();
-
+  console.log(body);
   const student = await prisma.student.findFirst({
     where: {
       email: body.username,
@@ -23,7 +23,6 @@ export async function POST(request) {
 
     return new Response(JSON.stringify(result));
   }
-
   const companyUser = await prisma.company.findFirst({
     where: {
       email: body.username,
