@@ -21,11 +21,13 @@ export default async function AppointInterview({ params }) {
   return (
     <div>
       <form
-        className="flex flex-col items-center gap-4 bg-sage-2 p-8 lg:mx-20"
+        className="bg-sage-2 flex flex-col items-center gap-4 p-8 lg:mx-20"
         action={appointInterviewAction}
       >
-        <h1 className="text-xl font-medium text-black">Appoint interview</h1>
-        <div className="flex w-full flex-row gap-8">
+        <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+          Appoint interview
+        </h1>
+        <div className="flex w-full flex-col gap-8 md:flex-row">
           <Input id="date" name="date" label="Date" type="date" required />
           <Input id="time" name="time" label="Time" required type="time" />
         </div>
