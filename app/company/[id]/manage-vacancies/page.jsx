@@ -86,7 +86,7 @@ export default async function ManageVacancies({ params }) {
                 <td className="px-6 py-4">
                   <Link
                     href={`/company/${params.id}/manage-vacancies/${vacancy.id}/manage-applicants`}
-                    className="text-teal-11 hover:underline"
+                    className="text-purple-primary hover:underline"
                   >
                     View
                   </Link>
@@ -103,7 +103,7 @@ export default async function ManageVacancies({ params }) {
                     />
                     <button
                       type="submit"
-                      className="text-red-11 hover:underline"
+                      className="text-red-primary hover:underline"
                     >
                       Delete
                     </button>
