@@ -57,10 +57,10 @@ export default function AiDana({ searchParams }) {
 
   if (isLoading) {
     return (
-      <div role="status" className="mx-auto my-auto h-screen">
+      <div role="status" className="container mx-auto my-auto w-full">
         <svg
           aria-hidden="true"
-          className="mr-2 h-8 w-8 animate-spin fill-teal-8 text-sage-4 dark:text-sage-8"
+          className="mx-auto h-8 w-8 animate-spin fill-blue-9 text-gray-primary dark:text-black"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -81,13 +81,14 @@ export default function AiDana({ searchParams }) {
 
   if (!isLoading) {
     return (
-      <div className="gap flex w-full flex-col items-center gap-4">
+      <div className="container mx-auto flex w-full flex-col items-center gap-4">
         {questions !== undefined && questions !== null && (
-          <div className="grid grid-rows-5 items-center gap-4">
+          <div className="grid grid-rows-5 items-center gap-4 text-sm md:text-base lg:text-lg">
             <div className="grid w-full grid-cols-2 gap-4">
               <p>{questions[0].question}</p>
               <Textfield
                 type="text"
+                className="w-full"
                 value={a1}
                 onChange={(e) => {
                   setA1(e.target.value);
@@ -99,6 +100,7 @@ export default function AiDana({ searchParams }) {
               <Textfield
                 type="text"
                 value={a2}
+                className="w-full"
                 onChange={(e) => {
                   setA2(e.target.value);
                 }}
@@ -108,6 +110,7 @@ export default function AiDana({ searchParams }) {
               <p>{questions[2].question}</p>
               <Textfield
                 type="text"
+                className="w-full"
                 value={a3}
                 onChange={(e) => {
                   setA3(e.target.value);
@@ -119,6 +122,7 @@ export default function AiDana({ searchParams }) {
               <Textfield
                 type="text"
                 value={a4}
+                className="w-full"
                 onChange={(e) => {
                   setA4(e.target.value);
                 }}
@@ -128,6 +132,7 @@ export default function AiDana({ searchParams }) {
               <p>{questions[4].question}</p>
               <Textfield
                 type="text"
+                className="w-full"
                 value={a5}
                 onChange={(e) => {
                   setA5(e.target.value);
@@ -136,18 +141,28 @@ export default function AiDana({ searchParams }) {
             </div>
           </div>
         )}
-        {response &&
-          show &&
-          response.map((point, i) => {
-            return (
-              <div key={point.i} className="flex flex-row gap-1">
-                <p>{point.n}</p>
-                <p className="text-sm font-normal text-teal-10">
-                  {point.feedback}
-                </p>
-              </div>
-            );
-          })}
+
+        {response && show && (
+          <div className="flex w-full flex-col gap-4 border bg-orange-primary p-4 text-sm md:text-base lg:text-lg">
+            {response.map((point, i) => {
+              return (
+                <div
+                  key={point.i}
+                  className="flex flex-row items-start gap-1 text-left"
+                >
+                  <p className="font-semibold">{point.n + ". "}</p>
+                  <p
+                    className={`text-black ${
+                      point.n === 6 ? "font-bold" : "font-normal"
+                    }`}
+                  >
+                    {point.feedback}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
 
         <div className="flex flex-row items-center gap-4">
           <Button
