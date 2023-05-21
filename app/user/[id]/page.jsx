@@ -100,7 +100,7 @@ export default async function UserAccount({ params }) {
                 >
                   <h4 className="col-span-1 text-sm font-normal md:text-base lg:text-lg">
                     {" "}
-                    {experience.start_date + " -"}
+                    {experience.start_date + " - "}
                     {experience.end_date}
                   </h4>
                   <div className="flex flex-col gap-2">
