@@ -62,8 +62,7 @@ export default function EditUserAccount({ params }) {
       {userAccountData && (
         <form className="flex w-full flex-col gap-6 px-4">
           <h1 className="text-xl font-medium text-black">Edit profile</h1>
-
-          <div className="flex w-full flex-row gap-8">
+          <div className="flex w-full flex-col gap-8 md:flex-row">
             <Input
               id="firstName"
               name="firstName"
@@ -87,7 +86,7 @@ export default function EditUserAccount({ params }) {
               required
             />
           </div>
-          <div className="flex flex-row gap-8">
+          <div className="flex flex-col gap-8  md:flex-row">
             <Input
               id="specialty"
               name="specialty"
@@ -109,7 +108,7 @@ export default function EditUserAccount({ params }) {
               className="w-full"
             />
           </div>
-          <div className="flex flex-row gap-8">
+          <div className="flex flex-col gap-8  md:flex-row">
             <Input
               id="website"
               name="website"
