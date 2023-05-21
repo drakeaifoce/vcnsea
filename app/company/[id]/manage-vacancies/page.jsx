@@ -33,9 +33,11 @@ export default async function ManageVacancies({ params }) {
   };
   return (
     <div className="flex flex-col gap-8">
-      <h1 className="text-xl font-medium text-black">Manage vacancies</h1>
-      <table className="w-full table-auto text-left text-sm text-sage-10">
-        <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
+      <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+        Manage vacancies
+      </h1>
+      <table className="w-full table-auto text-left text-sm sm:text-base md:text-lg">
+        <thead className="border bg-orange-primary font-medium uppercase">
           <tr>
             <th scope="col" className="px-6 py-3">
               Position
@@ -59,13 +61,15 @@ export default async function ManageVacancies({ params }) {
           </tr>
         </thead>
         <tbody>
-          {vacancies.map((vacancy) => {
+          {vacancies.map((vacancy, index) => {
             return (
-              <tr key={vacancy.id} className="border-b border-sage-6 bg-sage-2">
-                <th
-                  scope="row"
-                  className="text- whitespace-nowrap px-6 py-4 font-medium text-sage-12"
-                >
+              <tr
+                key={vacancy.id}
+                className={`border-b ${
+                  index % 2 === 0 || index === 0 ? "bg-blue-1" : ""
+                }`}
+              >
+                <th scope="row" className="px-6 py-4 font-medium">
                   <Link
                     href={`/vacancy/${vacancy.id}`}
                     className="hover:underline"
