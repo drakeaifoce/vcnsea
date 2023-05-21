@@ -61,7 +61,9 @@ export default function EditUserAccount({ params }) {
     <>
       {userAccountData && (
         <form className="flex w-full flex-col gap-6 px-4">
-          <h1 className="text-xl font-medium text-black">Edit profile</h1>
+          <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+            Edit profile
+          </h1>
           <div className="flex w-full flex-col gap-8 md:flex-row">
             <Input
               id="firstName"
