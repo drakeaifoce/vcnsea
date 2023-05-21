@@ -21,7 +21,10 @@ export const Header = () => {
           >
             Vacancies
           </Link>
-          <Link href="/talents" className="text-base font-bold text-black">
+          <Link
+            href="/talents"
+            className="hidden text-base font-bold text-black  sm:inline-block"
+          >
             Talents
           </Link>
           {session &&
@@ -31,7 +34,7 @@ export const Header = () => {
             <>
               <Link
                 href={`/user/${session.user.id}/applied-vacancies`}
-                className="hidden text-base font-bold text-black sm:inline-block"
+                className="text-base font-bold text-black"
               >
                 Applications
               </Link>
