@@ -30,10 +30,12 @@ export default async function Interviews({ params }) {
     },
   });
   return (
-    <div className="flex flex-col gap-8">
-      <h1 className="text-xl font-medium text-black">Interviews list</h1>
-      <table className="w-full table-auto text-left text-sm text-sage-10">
-        <thead className=" bg-sage-6 text-xs font-medium uppercase text-sage-12">
+    <div className=":sm:gap-6 flex flex-col gap-4 px-4 text-black md:gap-8 lg:gap-10">
+      <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
+        Interviews list
+      </h1>
+      <table className="w-full table-auto text-left text-sm sm:text-base md:text-lg">
+        <thead className="border bg-orange-primary font-medium uppercase">
           <tr>
             <th scope="col" className="px-6 py-3">
               Position
@@ -53,16 +55,15 @@ export default async function Interviews({ params }) {
           </tr>
         </thead>
         <tbody>
-          {interviews.map((interview) => {
+          {interviews.map((interview, index) => {
             return (
               <tr
                 key={interview.id}
-                className="border-b border-sage-6 bg-sage-2"
+                className={`border-b ${
+                  index % 2 === 0 || index === 0 ? "bg-blue-1" : ""
+                }`}
               >
-                <th
-                  scope="row"
-                  className="text- whitespace-nowrap px-6 py-4 font-medium text-sage-12"
-                >
+                <th scope="row" className="px-6 py-4 font-medium">
                   <Link
                     href={`/vacancy/${interview.Vacancy.id}`}
                     className=" hover:underline"
@@ -85,7 +86,7 @@ export default async function Interviews({ params }) {
                 <td className="px-6 py-4">
                   <Link
                     href={interview.link}
-                    className="text-teal-11 hover:underline"
+                    className="text-blue-8 hover:underline"
                   >
                     Enter
                   </Link>
