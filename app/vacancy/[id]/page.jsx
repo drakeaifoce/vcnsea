@@ -91,11 +91,11 @@ export default function VacancyPage({ params }) {
           <section className="flex flex-col">
             <Link
               href={`/profile/company/${vacancy.company.id}`}
-              className=" text-sm  font-normal hover:underline md:text-base lg:text-lg"
+              className="text-sm font-normal hover:underline md:text-base lg:text-lg"
             >
               {vacancy.company.company_name}
             </Link>
-            <h1 className="text-lg font-bold uppercase sm:text-xl md:text-2xl lg:text-3xl">
+            <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
               {vacancy.title}
             </h1>
           </section>
@@ -103,7 +103,7 @@ export default function VacancyPage({ params }) {
             <h6 className="cols-span-1 font-medium ">
               {vacancy.company.position}
             </h6>
-            <p className="cols-span-1 md:cols-span-2font-normal ">
+            <p className="cols-span-1 md:cols-span-2 font-normal ">
               {vacancy.company.firstName + " " + vacancy.company.secondName}
             </p>
           </section>
