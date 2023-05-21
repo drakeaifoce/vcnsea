@@ -1,8 +1,9 @@
 "use client";
+import { SignOut } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 export const Header = () => {
   const router = useRouter();
@@ -69,28 +70,37 @@ export const Header = () => {
         </div>
 
         {session && session.user ? (
-          <button
-            onClick={() =>
-              router.push(
-                session.user.Role === "USER"
-                  ? `/user/${session.user.id}`
-                  : `/company/${session.user.id}`,
-              )
-            }
-          >
-            <Image
-              alt={`${
-                session.user.firstName.charAt(0) +
-                session.user.secondName.charAt(0)
-              }`}
-              width={32}
-              height={32}
-              className="rounded-full"
-              src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${
-                session.user.firstName + "+" + session.user.secondName
-              }`}
-            />
-          </button>
+          <div className="flex flex-row gap-2">
+            <button
+              onClick={() =>
+                router.push(
+                  session.user.Role === "USER"
+                    ? `/user/${session.user.id}`
+                    : `/company/${session.user.id}`,
+                )
+              }
+            >
+              <Image
+                alt={`${
+                  session.user.firstName.charAt(0) +
+                  session.user.secondName.charAt(0)
+                }`}
+                width={32}
+                height={32}
+                className="rounded-full"
+                src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${
+                  session.user.firstName + "+" + session.user.secondName
+                }`}
+              />
+            </button>
+            <button
+              onClick={() => {
+                signOut({ callbackUrl: "/" });
+              }}
+            >
+              <SignOut size={24} className="text-black" />
+            </button>
+          </div>
         ) : (
           <div className="flex flex-row items-center justify-between gap-8">
             <button
