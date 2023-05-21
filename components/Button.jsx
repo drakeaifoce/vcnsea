@@ -22,7 +22,7 @@ export const Button = forwardRef(
               variant === "tertiary",
           },
           {
-            "border-red-7 bg-red-9 hover:bg-red-10 text-white":
+            "bg-red-primary text-white hover:bg-red-hover":
               variant === "danger",
           },
           {
