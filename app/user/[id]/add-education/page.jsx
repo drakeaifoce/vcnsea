@@ -5,7 +5,7 @@ import { Textfield } from "../../../../components/Textfield";
 import { prisma } from "../../../prisma";
 
 export default function AddEducation({ params }) {
-  const addWorkExperienceAction = async (data) => {
+  const addEducationAction = async (data) => {
     "use server";
     const education = await prisma.Education.create({
       data: {
@@ -24,7 +24,7 @@ export default function AddEducation({ params }) {
   };
   return (
     <div>
-      <form className="flex flex-col gap-9" action={addWorkExperienceAction}>
+      <form className="flex flex-col gap-9" action={addEducationAction}>
         <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
           Add education
         </h1>
