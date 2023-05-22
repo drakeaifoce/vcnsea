@@ -58,7 +58,7 @@ model Education {
   description     String
   link            String
   Student         Student? @relation(fields: [studentId], references: [id])
-  studentId       Int?
+  studentId       Int
 }
 
 model Certificate {
@@ -68,7 +68,7 @@ model Certificate {
   description     String
   link            String
   Student         Student? @relation(fields: [studentId], references: [id])
-  studentId       Int?
+  studentId       Int
 }
 
 model Company {
