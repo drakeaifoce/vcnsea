@@ -57,8 +57,8 @@ export default async function AddWorkExperience({ params }) {
         <Input
           id="city"
           name="city"
-          placeholder="Location"
-          label="Astana"
+          placeholder="Astana"
+          label="Location"
           type="text"
           required
         />
