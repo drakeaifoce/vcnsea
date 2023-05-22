@@ -29,6 +29,8 @@ model Student {
   about           String?
   Role            Role
   workExperiences WorkExperience[]
+  Education       Education[]
+  Certificates    Certificate[]
   Responses       Application[]
   Appointment     Appointment[]
 }
@@ -44,6 +46,29 @@ model WorkExperience {
   description  String
   Student      Student? @relation(fields: [studentId], references: [id])
   studentId    Int
+}
+
+model Education {
+  id              Int      @id @default(autoincrement())
+  startDate       String
+  endDate         String
+  institutionName String
+  degreeName      String
+  location        String
+  description     String
+  link            String
+  Student         Student? @relation(fields: [studentId], references: [id])
+  studentId       Int?
+}
+
+model Certificate {
+  id              Int      @id @default(autoincrement())
+  certificateName String
+  year            String
+  description     String
+  link            String
+  Student         Student? @relation(fields: [studentId], references: [id])
+  studentId       Int?
 }
 
 model Company {
