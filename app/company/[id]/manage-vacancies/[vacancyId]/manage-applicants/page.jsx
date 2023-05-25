@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Button } from "../../../../../../components/Button";
 import { prisma } from "../../../../../prisma";
 
@@ -8,6 +9,7 @@ export default async function ManageApplicants({ params }) {
       id: Number(params.vacancyId),
     },
     select: {
+      id: true,
       title: true,
       location: true,
       floorSalary: true,
@@ -25,6 +27,9 @@ export default async function ManageApplicants({ params }) {
             },
           },
         },
+        orderBy: {
+          id: "desc",
+        },
       },
     },
   });
@@ -39,6 +44,9 @@ export default async function ManageApplicants({ params }) {
         status: "Rejected",
       },
     });
+    redirect(
+      `/company/${params.id}/manage-vacancies/${params.vacancyId}/manage-applicants`,
+    );
   };
 
   return (
