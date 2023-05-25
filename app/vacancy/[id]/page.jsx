@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { Button } from "../../../components/Button";
 import { numberWithSpaces } from "../../utils";
 
@@ -20,7 +21,7 @@ export default function VacancyPage({ params }) {
       }),
     });
 
-    alert("Successfully submited!");
+    toast.success("Successfully submited application");
     return res;
   };
 
@@ -65,6 +66,7 @@ export default function VacancyPage({ params }) {
             />
             {session && session.user && session.user.Role === "USER" ? (
               <div className="flex flex-col items-center gap-4 md:flex-row">
+                <Toaster />
                 <Link
                   href={{
                     pathname: "/ar-ai/",
