@@ -65,8 +65,10 @@ export default async function AppliedVacancies({ params }) {
                 <section
                   className={`flex justify-center border border-black ${
                     application.status === "Pending"
-                      ? "bg-yellow-primary/80"
-                      : "bg-red-primary/80"
+                      ? "bg-yellow-primary"
+                      : (application.status === "Rejected"
+                      ? "bg-red-primary/80"
+                      : "bg-green-primary")
                   }  px-2.5 py-2 text-xs font-normal md:text-base lg:px-5 lg:py-4 lg:text-lg`}
                 >
                   Status: {application.status}
