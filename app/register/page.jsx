@@ -11,13 +11,13 @@ export default function RegisterChoice() {
           href="/register/user"
           className="text-base font-semibold hover:underline sm:text-lg md:text-xl lg:text-3xl"
         >
-          Talent
+          Job Seeker
         </Link>
         <Link
           href="/register/company"
           className="text-base font-semibold hover:underline sm:text-lg md:text-xl  lg:text-3xl"
         >
-          Talent seeker
+          Representative of the Company
         </Link>
       </div>
     </div>

@@ -4,13 +4,12 @@ import { prisma } from "../../prisma";
 
 export async function POST(request) {
   const body = await request.json();
-  console.log(body);
+
   const student = await prisma.student.findFirst({
     where: {
       email: body.username,
     },
   });
-
   if (student && (await bcrypt.compare(body.password, student.password))) {
     const userWithoutPass = { ...student };
     delete userWithoutPass.password;
@@ -23,17 +22,18 @@ export async function POST(request) {
 
     return new Response(JSON.stringify(result));
   }
-  const companyUser = await prisma.company.findFirst({
+
+  const companyAdmin = await prisma.companyAdmin.findFirst({
     where: {
       email: body.username,
     },
   });
 
   if (
-    companyUser &&
-    (await bcrypt.compare(body.password, companyUser.password))
+    companyAdmin &&
+    (await bcrypt.compare(body.password, companyAdmin.password))
   ) {
-    const userWithoutPass = { ...companyUser };
+    const userWithoutPass = { ...companyAdmin };
     delete userWithoutPass.password;
 
     const accessToken = signJwtAccessToken(userWithoutPass);

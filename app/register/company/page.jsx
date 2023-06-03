@@ -4,23 +4,18 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "../../../components/primitives/Button";
 import { Input } from "../../../components/primitives/Input";
-import { Textfield } from "../../../components/primitives/Textfield";
 import { prisma } from "../../prisma";
 
 export default function RegisterCompany() {
-  const registerCompanyAction = async (data) => {
+  const registerCompanyAdmin = async (data) => {
     "use server";
-    const company = await prisma.company.create({
+    const copmanyAdmin = await prisma.companyAdmin.create({
       data: {
         email: data.get("email"),
         firstName: data.get("firstName"),
         secondName: data.get("secondName"),
         position: data.get("position"),
-        company_name: data.get("company_name"),
-        BIN: data.get("BIN"),
-        city: data.get("city"),
-        description: data.get("description"),
-        Role: "COMPANY",
+        Role: "COMPANY_ADMIN",
         password: await bcrypt.hash(data.get("password"), 10),
       },
     });
@@ -41,7 +36,7 @@ export default function RegisterCompany() {
         <div className="bg-orange-primary">
           <form
             className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16"
-            action={registerCompanyAction}
+            action={registerCompanyAdmin}
           >
             <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
               Dive into the sea of talents
@@ -77,42 +72,6 @@ export default function RegisterCompany() {
               id="position"
               name="position"
               placeholder="Enter your position"
-              type="text"
-              className="w-full"
-              required
-            />
-
-            <Input
-              id="company_name"
-              name="company_name"
-              placeholder="Enter the name of your company"
-              type="text"
-              className="w-full"
-              required
-            />
-
-            <Input
-              id="BIN"
-              name="BIN"
-              placeholder="Enter BIN of your company"
-              type="text"
-              className="w-full"
-              required
-            />
-
-            <Input
-              id="city"
-              name="city"
-              placeholder="Enter location of your company"
-              type="text"
-              className="w-full"
-              required
-            />
-
-            <Textfield
-              id="description"
-              name="description"
-              placeholder="Enter short description of your company"
               type="text"
               className="w-full"
               required

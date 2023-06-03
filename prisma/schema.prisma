@@ -11,7 +11,8 @@ datasource db {
 }
 
 enum Role {
-  COMPANY
+  COMPANY_ADMIN
+  COMPANY_WORKER
   USER
 }
 
@@ -72,20 +73,41 @@ model Certificate {
 }
 
 model Company {
-  id           Int           @id @default(autoincrement())
-  firstName    String
-  secondName   String
-  email        String        @unique
-  position     String
-  company_name String
-  BIN          String
-  city         String
-  description  String
-  avatar       String?
-  Role         Role
-  password     String
-  Vacancies    Vacancy[]
-  Appointment  Appointment[]
+  id             Int           @id @default(autoincrement())
+  company_name   String
+  BIN            String
+  city           String
+  description    String
+  avatar         String?
+  Vacancies      Vacancy[]
+  Appointment    Appointment[]
+  CompanyAdmin   CompanyAdmin? @relation(fields: [companyAdminId], references: [id])
+  companyAdminId Int
+
+  CompanyWorkers CompanyWorker[]
+}
+
+model CompanyAdmin {
+  id         Int       @id @default(autoincrement())
+  firstName  String
+  secondName String
+  email      String    @unique
+  position   String
+  password   String
+  Role       Role
+  Company    Company[]
+}
+
+model CompanyWorker {
+  id         Int      @id @default(autoincrement())
+  firstName  String
+  secondName String
+  email      String   @unique
+  position   String
+  password   String
+  Role       Role
+  Company    Company? @relation(fields: [companyId], references: [id])
+  companyId  Int
 }
 
 model Vacancy {

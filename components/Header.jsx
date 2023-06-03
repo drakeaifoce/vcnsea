@@ -15,10 +15,22 @@ export const Header = () => {
         <Link href="/">
           <Image src="/vcnsea.svg" alt="vcnsea icon" width={84} height={14} />
         </Link>
-        <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-8">
-          1
+        <div className="flex flex-row justify-around">
+          {session && session.user ? (
+            <>
+              {session.user.Role === "COMPANY_ADMIN" && (
+                <Link
+                  href={`/company-admin/${session.user.id}`}
+                  className="hover:underline"
+                >
+                  Dashboard
+                </Link>
+              )}
+            </>
+          ) : (
+            ""
+          )}
         </div>
-
         {session && session.user ? (
           <div className="flex flex-row gap-2">
             <button
@@ -26,7 +38,9 @@ export const Header = () => {
                 router.push(
                   session.user.Role === "USER"
                     ? `/user/${session.user.id}`
-                    : `/company/${session.user.id}`,
+                    : (session.user.Role === "COMPANY_ADMIN"
+                    ? `/company-admin/${session.user.id}`
+                    : ""),
                 )
               }
             >

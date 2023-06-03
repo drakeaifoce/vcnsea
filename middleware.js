@@ -4,8 +4,8 @@ import { withAuth } from "next-auth/middleware";
 export default withAuth(
   (req) => {
     if (
-      req.nextUrl.pathname.startsWith("/company") &&
-      req.nextauth.token?.Role !== "COMPANY"
+      req.nextUrl.pathname.startsWith("/company-admin") &&
+      req.nextauth.token?.Role !== "COMPANY_ADMIN"
     )
       return NextResponse.rewrite(
         new URL("/auth/login?message=You Are Not Authorized!", req.url),
@@ -17,6 +17,13 @@ export default withAuth(
       return NextResponse.rewrite(
         new URL("/auth/login?message=You Are Not Authorized!", req.url),
       );
+    if (
+      req.nextUrl.pathname.startsWith("/company") &&
+      req.nextauth.token?.Role !== "COMPANY_WORKER"
+    )
+      NextResponse.rewrite(
+        new URL("/auth/login?message=You Are Not Authorized!", req.url),
+      );
   },
   {
     callbacks: {
@@ -26,5 +33,5 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/company/:path*", "/user/:path*"],
+  matcher: ["/company-admin/:path*", "/user/:path*", "/company/:path*"],
 };
