@@ -9,7 +9,7 @@ module.exports = {
       current: "currentColor",
       transparent: "transparent",
       black: "#090909",
-      white: "#F5F5F5",
+      white: "#FFFFFF",
       gray: {
         primary: "#BBB9BA",
         hover: "#A6A4A5",

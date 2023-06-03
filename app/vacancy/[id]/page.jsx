@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useCallback, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/primitives/Button";
 import { numberWithSpaces } from "../../utils";
 
 export default function VacancyPage({ params }) {

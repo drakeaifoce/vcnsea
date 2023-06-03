@@ -1,9 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "../../../../components/Button";
-import { Input } from "../../../../components/Input";
-import { Textfield } from "../../../../components/Textfield";
+import { Button } from "../../../../components/primitives/Button";
+import { Input } from "../../../../components/primitives/Input";
+import { Textfield } from "../../../../components/primitives/Textfield";
 
 export default function EditUserAccount({ params }) {
   const router = useRouter();

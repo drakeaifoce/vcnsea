@@ -2,9 +2,9 @@ import * as bcrypt from "bcrypt";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
-import { Textfield } from "../../../components/Textfield";
+import { Button } from "../../../components/primitives/Button";
+import { Input } from "../../../components/primitives/Input";
+import { Textfield } from "../../../components/primitives/Textfield";
 import { prisma } from "../../prisma";
 
 export default function RegisterCompany() {

@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "../../components/Button";
-import { Textfield } from "../../components/Textfield";
+import { Button } from "../../components/primitives/Button";
+import { Textfield } from "../../components/primitives/Textfield";
 
 export default function AiDana({ searchParams }) {
   const [questions, setQuestions] = useState();

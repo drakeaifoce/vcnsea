@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import { Button } from "../../../../../../../../components/Button";
-import { Input } from "../../../../../../../../components/Input";
+import { Button } from "../../../../../../../../components/primitives/Button";
+import { Input } from "../../../../../../../../components/primitives/Input";
 import { prisma } from "../../../../../../../prisma";
 
 export default async function AppointInterview({ params }) {

@@ -10,63 +10,13 @@ export const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <header className="bg-yellow-primary">
+    <header className="bg-white">
       <nav className="container mx-auto flex flex-row items-center  justify-between  px-4 py-5">
         <Link href="/">
           <Image src="/vcnsea.svg" alt="vcnsea icon" width={84} height={14} />
         </Link>
         <div className="flex flex-row items-center gap-2 sm:gap-4 md:gap-8">
-          <Link
-            href="/"
-            className="hidden text-base font-bold text-black sm:inline-block"
-          >
-            Vacancies
-          </Link>
-          <Link
-            href="/talents"
-            className="hidden text-base font-bold text-black  sm:inline-block"
-          >
-            Talents
-          </Link>
-          {session &&
-          session.user &&
-          session.user.id &&
-          session.user.Role === "USER" ? (
-            <>
-              <Link
-                href={`/user/${session.user.id}/applied-vacancies`}
-                className="text-base font-bold text-black"
-              >
-                Applications
-              </Link>
-              <Link
-                href={`/user/${session.user.id}/interview-appointments`}
-                className="text-base font-bold text-black"
-              >
-                Interviews
-              </Link>
-            </>
-          ) : (session &&
-            session.user &&
-            session.user.id &&
-            session.user.Role === "COMPANY" ? (
-            <>
-              <Link
-                href={`/company/${session.user.id}/manage-vacancies`}
-                className="hidden text-base font-bold text-black sm:inline-block"
-              >
-                Manage vacancies
-              </Link>
-              <Link
-                href={`/company/${session.user.id}/interviews`}
-                className="text-base font-bold text-black"
-              >
-                Interviews
-              </Link>
-            </>
-          ) : (
-            <></>
-          ))}
+          1
         </div>
 
         {session && session.user ? (

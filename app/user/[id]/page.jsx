@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../components/primitives/Button";
 import { prisma } from "../../prisma";
 
 export default async function UserAccount({ params }) {
