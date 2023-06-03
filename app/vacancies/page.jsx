@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
-import { JobCard } from "../../components/JobCard";
 import { Button } from "../../components/primitives/Button";
 import { Input } from "../../components/primitives/Input";
 import { numberWithSpaces } from "../utils";
