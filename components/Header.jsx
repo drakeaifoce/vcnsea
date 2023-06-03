@@ -40,6 +40,8 @@ export const Header = () => {
                     ? `/user/${session.user.id}`
                     : (session.user.Role === "COMPANY_ADMIN"
                     ? `/company-admin/${session.user.id}`
+                    : session.user.Role === "COMPANY_WORKER"
+                    ? `/company/${session.user.companyId}`
                     : ""),
                 )
               }

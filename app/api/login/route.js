@@ -28,12 +28,32 @@ export async function POST(request) {
       email: body.username,
     },
   });
-
   if (
     companyAdmin &&
     (await bcrypt.compare(body.password, companyAdmin.password))
   ) {
     const userWithoutPass = { ...companyAdmin };
+    delete userWithoutPass.password;
+
+    const accessToken = signJwtAccessToken(userWithoutPass);
+    const result = {
+      ...userWithoutPass,
+      accessToken,
+    };
+
+    return new Response(JSON.stringify(result));
+  }
+
+  const companyWorker = await prisma.companyWorker.findFirst({
+    where: {
+      email: body.username,
+    },
+  });
+  if (
+    companyWorker &&
+    (await bcrypt.compare(body.password, companyWorker.password))
+  ) {
+    const userWithoutPass = { ...companyWorker };
     delete userWithoutPass.password;
 
     const accessToken = signJwtAccessToken(userWithoutPass);

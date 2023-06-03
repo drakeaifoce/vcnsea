@@ -62,24 +62,12 @@ export default async function CompanyAccount({ params }) {
           </div>
         </div>
         <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
-          <h6 className="cols-span-1 font-medium ">{company.position}</h6>
-          <p className="cols-span-1 md:cols-span-2 font-normal ">
-            {company.firstName + " " + company.secondName}
-          </p>
-        </section>
-        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
           <h6 className="cols-span-1 font-medium ">Description</h6>
           <p className="cols-span-1 md:cols-span-2 font-normal ">
             {company.description}
           </p>
         </section>
-        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
-          <h6 className="cols-span-1 font-medium ">Contacts</h6>
-          <p className="cols-span-1 md:cols-span-2 font-normal ">
-            {company.email}
-          </p>
-        </section>
-        <secion className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4">
           <h5 className="text-lg font-semibold sm:text-xl md:text-2xl lg:text-3xl">
             Available positions
           </h5>
@@ -125,7 +113,7 @@ export default async function CompanyAccount({ params }) {
               })}
             </tbody>
           </table>
-        </secion>
+        </section>
       </div>
     </>
   );
