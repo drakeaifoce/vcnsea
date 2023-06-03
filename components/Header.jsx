@@ -38,22 +38,27 @@ export const Header = () => {
                 router.push(
                   session.user.Role === "USER"
                     ? `/user/${session.user.id}`
-                    : (session.user.Role === "COMPANY_ADMIN"
+                    : session.user.Role === "COMPANY_ADMIN"
                     ? `/company-admin/${session.user.id}`
                     : session.user.Role === "COMPANY_WORKER"
                     ? `/company/${session.user.companyId}`
-                    : ""),
+                    : "",
                 )
               }
             >
               <Image
-                alt={`${
-                  session.user.firstName.charAt(0) +
-                  session.user.secondName.charAt(0)
-                }`}
+                alt={
+                  !session.user.Role === "SUPERADMIN" &&
+                  `${
+                    session.user.firstName.charAt(0) +
+                    session.user.secondName.charAt(0)
+                  }`
+                }
                 width={32}
                 height={32}
-                className="rounded-full"
+                className={`rounded-full ${
+                  session.user.Role === "SUPERADMIN" && "hidden"
+                }`}
                 src={`https://ui-avatars.com/api/?background=BBB9BA&color=090909&name=${
                   session.user.firstName + "+" + session.user.secondName
                 }`}

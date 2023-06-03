@@ -24,6 +24,13 @@ export default withAuth(
       NextResponse.rewrite(
         new URL("/auth/login?message=You Are Not Authorized!", req.url),
       );
+    if (
+      req.nextUrl.pathname.startsWith("/superadmin") &&
+      req.nextauth.token?.Role !== "SUPERADMIN"
+    )
+      NextResponse.rewrite(
+        new URL("/auth/login?message=You Are Not Authorized!", req.url),
+      );
   },
   {
     callbacks: {
@@ -33,5 +40,10 @@ export default withAuth(
 );
 
 export const config = {
-  matcher: ["/company-admin/:path*", "/user/:path*", "/company/:path*"],
+  matcher: [
+    "/company-admin/:path*",
+    "/user/:path*",
+    "/company/:path*",
+    "/superadmin/:path*",
+  ],
 };

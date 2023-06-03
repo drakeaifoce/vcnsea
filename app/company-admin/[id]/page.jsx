@@ -14,10 +14,25 @@ export default async function CompanyAdminDashboard({ params }) {
           company_name: true,
           BIN: true,
           city: true,
+          verified: {
+            select: {
+              isVerified: true,
+            },
+          },
         },
       },
     },
   });
+
+  const createCompanyVerificationApplicationAction = async (data) => {
+    "use server";
+    const verification = prisma.companyVerification.create({
+      data: {
+        isVerified: false,
+      },
+    });
+  };
+
   return (
     <>
       <div className=":sm:gap-6 flex flex-col gap-4 px-4 text-black md:gap-8 lg:gap-10">
@@ -48,6 +63,10 @@ export default async function CompanyAdminDashboard({ params }) {
                   <th scope="col" className="px-6 py-3">
                     Location
                   </th>
+                  <th scope="col" className="px-6 py-3">
+                    Verification
+                  </th>
+                  <th />
                 </tr>
               </thead>
               <tbody>
@@ -70,6 +89,24 @@ export default async function CompanyAdminDashboard({ params }) {
                       </th>
                       <td className="px-6 py-4">{company.BIN}</td>
                       <td className="px-6 py-4">{company.city}</td>
+                      <td className="px-6 py-4">
+                        {company.verified ? "Verified" : "Not verified"}
+                      </td>
+                      <td
+                        className={
+                          company.verified
+                            ? "hidden"
+                            : "inline-block px-6 py-4 text-green-primary"
+                        }
+                      >
+                        <form
+                          action={createCompanyVerificationApplicationAction}
+                        >
+                          <button className="hover:underline" type="submit">
+                            Apply for verification
+                          </button>
+                        </form>
+                      </td>
                     </tr>
                   );
                 })}

@@ -13,6 +13,7 @@ export default function CreateCompany({ params }) {
         BIN: data.get("BIN"),
         city: data.get("city"),
         description: data.get("description"),
+        contact: data.get("contact"),
         companyAdminId: Number(params.id),
       },
     });
@@ -47,7 +48,14 @@ export default function CreateCompany({ params }) {
             className="w-full"
             required
           />
-
+          <Input
+            id="contact"
+            name="contact"
+            placeholder="Enter contact email"
+            type="text"
+            className="w-full"
+            required
+          />
           <Input
             id="city"
             name="city"
