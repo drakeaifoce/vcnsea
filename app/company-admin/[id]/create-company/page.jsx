@@ -15,6 +15,8 @@ export default function CreateCompany({ params }) {
         description: data.get("description"),
         contact: data.get("contact"),
         companyAdminId: Number(params.id),
+        verificationStatus: "Not verified",
+        isVerified: false,
       },
     });
 

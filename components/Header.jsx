@@ -26,6 +26,41 @@ export const Header = () => {
                   Dashboard
                 </Link>
               )}
+              {session.user.Role === "COMPANY_WORKER" && (
+                <div className="flex flex-row gap-4">
+                  <Link href="/vacancies" className="hover:underline">
+                    Vacancies
+                  </Link>
+                  <Link href="/talents" className="hover:underline">
+                    Talents
+                  </Link>
+                </div>
+              )}
+              {session.user.Role === "SUPERADMIN" && (
+                <Link href="/superadmin" className="hover:underline">
+                  Dashboard
+                </Link>
+              )}
+              {session.user.Role === "CONTENT_ADMIN" && (
+                <div className="flex flex-row gap-4">
+                  <Link href="/vacancies" className="hover:underline">
+                    Vacancies
+                  </Link>
+                  <Link href="/talents" className="hover:underline">
+                    Talents
+                  </Link>
+                  <Link href="/companies" className="hover:underline">
+                    Companies
+                  </Link>
+                </div>
+              )}
+              {session.user.Role === "USER" && (
+                <>
+                  <Link href="/vacancies" className="hover:underline">
+                    Vacancies
+                  </Link>
+                </>
+              )}
             </>
           ) : (
             ""
@@ -38,11 +73,11 @@ export const Header = () => {
                 router.push(
                   session.user.Role === "USER"
                     ? `/user/${session.user.id}`
-                    : session.user.Role === "COMPANY_ADMIN"
+                    : (session.user.Role === "COMPANY_ADMIN"
                     ? `/company-admin/${session.user.id}`
                     : session.user.Role === "COMPANY_WORKER"
                     ? `/company/${session.user.companyId}`
-                    : "",
+                    : ""),
                 )
               }
             >

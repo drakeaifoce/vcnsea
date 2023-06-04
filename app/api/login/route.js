@@ -86,5 +86,26 @@ export async function POST(request) {
     return new Response(JSON.stringify(result));
   }
 
+  const contentAdmin = await prisma.contentAdmin.findFirst({
+    where: {
+      email: body.username,
+    },
+  });
+  if (
+    contentAdmin &&
+    (await bcrypt.compare(body.password, contentAdmin.password))
+  ) {
+    const userWithoutPass = { ...contentAdmin };
+    delete userWithoutPass.password;
+
+    const accessToken = signJwtAccessToken(userWithoutPass);
+    const result = {
+      ...userWithoutPass,
+      accessToken,
+    };
+
+    return new Response(JSON.stringify(result));
+  }
+
   return new Response(JSON.stringify(null));
 }

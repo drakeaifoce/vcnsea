@@ -14,21 +14,21 @@ export default async function CompanyAdminDashboard({ params }) {
           company_name: true,
           BIN: true,
           city: true,
-          verified: {
-            select: {
-              isVerified: true,
-            },
-          },
+          isVerified: true,
+          verificationStatus: true,
         },
       },
     },
   });
 
-  const createCompanyVerificationApplicationAction = async (data) => {
+  const submitForVerificationAction = async (data) => {
     "use server";
-    const verification = prisma.companyVerification.create({
+    const verification = await prisma.company.update({
+      where: {
+        id: Number(data.get("id")),
+      },
       data: {
-        isVerified: false,
+        verificationStatus: "Pending",
       },
     });
   };
@@ -64,7 +64,7 @@ export default async function CompanyAdminDashboard({ params }) {
                     Location
                   </th>
                   <th scope="col" className="px-6 py-3">
-                    Verification
+                    Verification status
                   </th>
                   <th />
                 </tr>
@@ -90,20 +90,27 @@ export default async function CompanyAdminDashboard({ params }) {
                       <td className="px-6 py-4">{company.BIN}</td>
                       <td className="px-6 py-4">{company.city}</td>
                       <td className="px-6 py-4">
-                        {company.verified ? "Verified" : "Not verified"}
+                        {company.verificationStatus}
                       </td>
                       <td
                         className={
-                          company.verified
+                          company.verificationStatus !== "Not verified"
                             ? "hidden"
                             : "inline-block px-6 py-4 text-green-primary"
                         }
                       >
-                        <form
-                          action={createCompanyVerificationApplicationAction}
-                        >
-                          <button className="hover:underline" type="submit">
-                            Apply for verification
+                        <form action={submitForVerificationAction}>
+                          <input
+                            readOnly
+                            className="hidden"
+                            name="id"
+                            value={company.id}
+                          />
+                          <button
+                            type="submit"
+                            className="text-green-primary hover:underline"
+                          >
+                            Verify
                           </button>
                         </form>
                       </td>

@@ -12,6 +12,7 @@ datasource db {
 
 enum Role {
   SUPERADMIN
+  CONTENT_ADMIN
   COMPANY_ADMIN
   COMPANY_WORKER
   USER
@@ -22,6 +23,15 @@ model SuperAdmin {
   email    String @unique
   password String
   Role     Role
+}
+
+model ContentAdmin {
+  id         Int    @id @default(autoincrement())
+  email      String @unique
+  password   String
+  Role       Role
+  firstName  String
+  secondName String
 }
 
 model Student {
@@ -81,7 +91,7 @@ model Certificate {
 }
 
 model Company {
-  id             Int                  @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   company_name   String
   BIN            String
   city           String
@@ -90,9 +100,11 @@ model Company {
   avatar         String?
   Vacancies      Vacancy[]
   Appointment    Appointment[]
-  CompanyAdmin   CompanyAdmin?        @relation(fields: [companyAdminId], references: [id])
+  CompanyAdmin   CompanyAdmin? @relation(fields: [companyAdminId], references: [id])
   companyAdminId Int
-  verified       CompanyVerification?
+
+  isVerified         Boolean
+  verificationStatus String
 
   CompanyWorkers CompanyWorker[]
 }
@@ -118,13 +130,6 @@ model CompanyWorker {
   Role       Role
   Company    Company? @relation(fields: [companyId], references: [id])
   companyId  Int
-}
-
-model CompanyVerification {
-  id         Int      @id @default(autoincrement())
-  isVerified Boolean
-  Company    Company? @relation(fields: [companyId], references: [id])
-  companyId  Int      @unique
 }
 
 model Vacancy {
