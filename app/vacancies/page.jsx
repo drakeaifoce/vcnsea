@@ -176,7 +176,7 @@ export default function Index() {
                             return (
                               <div
                                 key={tag.id}
-                                className="rounded-md bg-orange-primary px-4 py-2"
+                                className="flex flex-row items-center rounded-md bg-orange-primary px-4 py-2"
                               >
                                 {tag.name}
                               </div>
