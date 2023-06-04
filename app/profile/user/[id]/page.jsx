@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MakeOffer } from "../../../../components/MakeOffer";
 import { prisma } from "../../../prisma";
 
 export default async function UserProfile({ params }) {
@@ -58,6 +59,7 @@ export default async function UserProfile({ params }) {
           <address className="text-sm font-normal not-italic md:text-base lg:text-lg">
             {student.email ? student.email : " "}
           </address>
+          <MakeOffer studentId={student.id} />
         </>
       </div>
       {student.quote && (

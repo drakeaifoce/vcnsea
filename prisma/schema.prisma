@@ -52,6 +52,7 @@ model Student {
   Certificates    Certificate[]
   Responses       Application[]
   Appointment     Appointment[]
+  Offers          Offer[]
 }
 
 model WorkExperience {
@@ -130,6 +131,8 @@ model CompanyWorker {
   Role       Role
   Company    Company? @relation(fields: [companyId], references: [id])
   companyId  Int
+
+  Offers Offer[]
 }
 
 model Vacancy {
@@ -144,6 +147,7 @@ model Vacancy {
   companyId     Int
   Applications  Application[]
   Appointment   Appointment[]
+  Tags          Tag[]
 }
 
 model Application {
@@ -166,4 +170,20 @@ model Appointment {
   companyId Int
   Vacancy   Vacancy? @relation(fields: [vacancyId], references: [id], onDelete: Cascade)
   vacancyId Int?
+}
+
+model Offer {
+  id              Int            @id @default(autoincrement())
+  status          String
+  Student         Student?       @relation(fields: [studentId], references: [id])
+  studentId       Int?
+  CompanyWorker   CompanyWorker? @relation(fields: [companyWorkerId], references: [id])
+  companyWorkerId Int?
+}
+
+model Tag {
+  id        Int       @id @default(autoincrement())
+  name      String
+  type      String
+  Vacancies Vacancy[]
 }

@@ -62,6 +62,12 @@ export default async function CompanyAccount({ params }) {
           </div>
         </div>
         <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
+          <h6 className="cols-span-1 font-medium ">Contact email</h6>
+          <p className="cols-span-1 md:cols-span-2 font-normal ">
+            {company.contact}
+          </p>
+        </section>
+        <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
           <h6 className="cols-span-1 font-medium ">Description</h6>
           <p className="cols-span-1 md:cols-span-2 font-normal ">
             {company.description}
