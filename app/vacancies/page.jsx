@@ -5,12 +5,17 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "../../components/primitives/Button";
 import { Input } from "../../components/primitives/Input";
+import { employment, technologies } from "../consts";
 import { numberWithSpaces } from "../utils";
 
 export default function Index() {
   const [vacancies, setVacancies] = useState();
   const [searchQuery, setSearchQuery] = useState("");
   const [minumuSalaryFilter, setMinimumSalaryFilter] = useState("");
+
+  const [tech, setTech] = useState("");
+  const [emp, setEmp] = useState("");
+
   const router = useRouter();
   const onSearch = () => {
     if (typeof searchQuery !== "string") {
@@ -18,7 +23,14 @@ export default function Index() {
     }
     const encodedSearchQuery = encodeURI(searchQuery);
     const encodedMinimumSalary = encodeURI(minumuSalaryFilter);
-    getVacancies({ encodedSearchQuery, encodedMinimumSalary });
+    const encodedTech = encodeURI(tech);
+    const encodedEmp = encodeURI(emp);
+    getVacancies({
+      encodedSearchQuery,
+      encodedMinimumSalary,
+      encodedTech,
+      encodedEmp,
+    });
     router.refresh();
   };
 
@@ -30,8 +42,14 @@ export default function Index() {
           : ""
       }${
         queries && queries.encodedMinimumSalary
-          ? "minimumSalary=" + queries.encodedMinimumSalary
+          ? "minimumSalary=" + queries.encodedMinimumSalary + "&"
           : ""
+      }${
+        queries && queries.encodedTech
+          ? "technology=" + queries.encodedTech + "&"
+          : ""
+      }${
+        queries && queries.encodedEmp ? "employment=" + queries.encodedEmp : ""
       }`,
       {
         method: "GET",
@@ -70,13 +88,36 @@ export default function Index() {
       <div className="my-4 flex flex-col gap-x-4 gap-y-4 md:flex-row  md:gap-x-6 lg:my-8 lg:gap-x-8 xl:my-10 xl:gap-x-10">
         <section className="max-h-fit">
           <div className="border bg-orange-primary p-4 md:p-6 lg:p-8 xl:p-10">
-            <div className="flex flex-row items-end gap-1">
+            <div className="flex flex-col items-end gap-1">
               <Input
                 label="Minimum salary"
                 placeholder="Set minimum salary"
                 value={minumuSalaryFilter}
                 onChange={(e) => setMinimumSalaryFilter(e.target.value)}
               />
+              <select
+                id="employment"
+                name="employment"
+                onChange={(e) => setEmp(e.target.value)}
+                className="bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white"
+              >
+                <option value="Full-time">Full-time</option>
+                <option value="Part-time">Part-time</option>
+              </select>
+              <select
+                id="technology"
+                name="technology"
+                onChange={(e) => setTech(e.target.value)}
+                className="bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white"
+              >
+                {technologies.map((tech) => {
+                  return (
+                    <option key={tech.id} value={tech.name}>
+                      {tech.name}
+                    </option>
+                  );
+                })}
+              </select>
               <Button variant="secondary" onClick={onSearch}>
                 Apply
               </Button>
@@ -128,7 +169,20 @@ export default function Index() {
                         </address>
                       </section>
                     </main>
-                    <footer className="flex flex-row justify-end">
+                    <footer className="flex flex-row justify-between">
+                      <section className="flex flex-col gap-4 sm:flex-row">
+                        {vacancy.Tags &&
+                          vacancy.Tags.map((tag) => {
+                            return (
+                              <div
+                                key={tag.id}
+                                className="rounded-md bg-orange-primary px-4 py-2"
+                              >
+                                {tag.name}
+                              </div>
+                            );
+                          })}
+                      </section>
                       <Link
                         href={`/vacancy/${vacancy.id}`}
                         className="uppercase"

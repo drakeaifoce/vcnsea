@@ -182,8 +182,9 @@ model Offer {
 }
 
 model Tag {
-  id        Int       @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   name      String
   type      String
-  Vacancies Vacancy[]
+  Vacancy   Vacancy @relation(fields: [vacancyId], references: [id])
+  vacancyId Int
 }

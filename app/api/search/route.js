@@ -19,9 +19,34 @@ export async function GET(request, { searchParams, params }) {
               },
             }
           : {}),
+        ...(request.nextUrl.searchParams.get("employment")
+          ? {
+              Tags: {
+                some: {
+                  name: {
+                    equals: request.nextUrl.searchParams.get("employment"),
+                    mode: "insensitive",
+                  },
+                },
+              },
+            }
+          : {}),
+        ...(request.nextUrl.searchParams.get("technology")
+          ? {
+              Tags: {
+                some: {
+                  name: {
+                    equals: request.nextUrl.searchParams.get("technology"),
+                    mode: "insensitive",
+                  },
+                },
+              },
+            }
+          : {}),
       },
       include: {
         company: true,
+        Tags: true,
       },
     });
 

@@ -22,23 +22,9 @@ export async function GET(request, { params }) {
       where: {
         id: Number(params.id),
       },
-      select: {
-        id: true,
-        floorSalary: true,
-        ceilingSalary: true,
-        title: true,
-        description: true,
-        location: true,
-        company: {
-          select: {
-            id: true,
-            firstName: true,
-            secondName: true,
-            position: true,
-            email: true,
-            company_name: true,
-          },
-        },
+      include: {
+        Tags: true, // Include related Tags
+        company: true, // Include related Company
       },
     });
     if (!vacancy) {

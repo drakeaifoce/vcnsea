@@ -51,6 +51,7 @@ export default function VacancyPage({ params }) {
     getVacancy();
   }, [getVacancy]);
 
+  console.log(vacancy);
   return (
     vacancy && (
       <>
@@ -102,14 +103,6 @@ export default function VacancyPage({ params }) {
             </h1>
           </section>
           <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
-            <h6 className="cols-span-1 font-medium ">
-              {vacancy.company.position}
-            </h6>
-            <p className="cols-span-1 md:cols-span-2 font-normal ">
-              {vacancy.company.firstName + " " + vacancy.company.secondName}
-            </p>
-          </section>
-          <section className="grid grid-cols-2 text-sm md:grid-cols-3  md:text-base lg:text-lg">
             <h6 className="cols-span-1 font-medium">Salary</h6>
             <p className="cols-span-1 md:cols-span-2  font-normal">
               {numberWithSpaces(vacancy.floorSalary)} -{" "}
@@ -127,6 +120,19 @@ export default function VacancyPage({ params }) {
             <p className="cols-span-1 md:cols-span-2font-normal">
               {vacancy.description}
             </p>
+          </section>
+          <section className="flex flex-col gap-4 sm:flex-row">
+            {vacancy.Tags &&
+              vacancy.Tags.map((tag) => {
+                return (
+                  <div
+                    key={tag.id}
+                    className="rounded-md bg-orange-primary px-4 py-2"
+                  >
+                    {tag.name}
+                  </div>
+                );
+              })}
           </section>
         </div>
       </>
