@@ -6,7 +6,7 @@ export const Textfield = forwardRef(
     return (
       <>
         {label && (
-          <label htmlFor="name" className="text-sm font-normal text-sage-10">
+          <label htmlFor="name" className="text-sage-10 text-sm font-normal">
             {label}
           </label>
         )}
@@ -16,7 +16,7 @@ export const Textfield = forwardRef(
           name={name}
           placeholder={placeholder}
           className={clsx(
-            "h-20 w-1/2 border border-sage-7 bg-white px-6 py-4 text-base font-normal text-sage-12 outline-none hover:bg-sage-4 focus:text-black focus:ring-0",
+            "border-sage-7 text-sage-12 hover:bg-sage-4 h-20 w-1/2 rounded-md border bg-white px-6 py-4 text-base font-normal outline-none focus:text-black focus:ring-0",
             className,
           )}
           {...props}

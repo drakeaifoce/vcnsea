@@ -27,14 +27,6 @@ export default function Login() {
 
   return (
     <>
-      <Image
-        alt="wave"
-        height={0}
-        width={0}
-        unoptimized
-        src="/wave_wide.jpg"
-        className="h-20 w-full object-cover"
-      />
       <div className="bg-orange-primary">
         <form className="flex flex-col items-center gap-4 px-4 py-8 sm:gap-6 sm:px-6 md:gap-8 md:px-8 md:py-12 lg:gap-10 lg:px-10 lg:py-16">
           <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
@@ -69,7 +61,17 @@ export default function Login() {
           <Button variant="primary" type="button" onClick={onSubmit}>
             Sign in
           </Button>
-          <Button variant="transparent" type="button" onClick={onGoogle}>
+          <Button
+            className="flex flex-row items-center gap-2 bg-white"
+            type="button"
+            onClick={onGoogle}
+          >
+            <Image
+              src="/google-logo.svg"
+              width={15}
+              height={15}
+              alt="Google logo"
+            />
             Sign in with Google
           </Button>
           <div className="text-lg">

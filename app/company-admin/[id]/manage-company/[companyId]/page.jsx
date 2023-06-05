@@ -8,15 +8,9 @@ export default async function ManageCompany({ params }) {
       id: Number(params.companyId),
     },
     include: {
-      CompanyWorkers: {
-        select: {
-          id: true,
-          firstName: true,
-          secondName: true,
-          email: true,
-          position: true,
-        },
-      },
+      CompanyWorkers: true,
+      Vacancies: true,
+      Appointment: true,
     },
   });
   return (
@@ -26,13 +20,6 @@ export default async function ManageCompany({ params }) {
           <h1 className="text-xl font-extrabold sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             Dashboard | {company.company_name}
           </h1>
-          {/* <Link
-            href={`/company-admin/${params.id}/manage-company/${params.companyId}/edit-company`}
-          >
-            <Button variant="primary" type="button">
-              Edit company info
-            </Button>
-          </Link> */}
         </div>
       </div>
       <div className="flex flex-col gap-4 md:flex-row">
@@ -40,6 +27,23 @@ export default async function ManageCompany({ params }) {
           <h2 className="text-sm font-extrabold sm:text-base md:text-lg lg:text-xl xl:text-2xl">
             Insights
           </h2>
+          <div className="flex flex-col gap-4">
+            {company.CompanyWorkers ? (
+              <p>Total workers: {company.CompanyWorkers.length}</p>
+            ) : (
+              ""
+            )}
+            {company.Vacancies ? (
+              <p>Total vacancies: {company.Vacancies.length}</p>
+            ) : (
+              ""
+            )}
+            {company.Appointment ? (
+              <p>Total appointments: {company.Appointment.length}</p>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
         <div className="flex flex-col gap-4 rounded-md bg-white p-4 md:w-2/3">
           <div className="flex flex-row items-center justify-between">
@@ -55,7 +59,7 @@ export default async function ManageCompany({ params }) {
             </Link>
           </div>
           <table className="w-full table-auto text-left text-sm sm:text-base md:text-lg">
-            <thead className="border bg-orange-primary font-medium uppercase">
+            <thead className="bg-orange-primary border font-medium uppercase">
               <tr>
                 <th scope="col" className="px-6 py-3">
                   Name

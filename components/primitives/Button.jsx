@@ -8,13 +8,13 @@ export const Button = forwardRef(
         onClick={onClick}
         ref={ref}
         className={clsx(
-          "whitespace-nowrap px-2 py-1 text-sm uppercase md:px-5 md:py-2.5 md:text-base lg:px-10 lg:py-5 lg:text-lg",
+          "whitespace-nowrap rounded px-3 py-2 text-sm font-medium",
           {
-            "bg-green-primary text-white hover:bg-green-hover":
+            "rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600":
               variant === "primary",
           },
           {
-            " bg-purple-primary text-white hover:bg-purple-hover":
+            "rounded-md bg-indigo-100 px-3.5 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600":
               variant === "secondary",
           },
           {
@@ -22,7 +22,7 @@ export const Button = forwardRef(
               variant === "tertiary",
           },
           {
-            "bg-red-primary text-white hover:bg-red-hover":
+            "bg-red-primary hover:bg-red-hover text-white":
               variant === "danger",
           },
           {

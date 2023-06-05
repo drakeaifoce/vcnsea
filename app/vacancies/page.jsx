@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { Badge } from "../../components/primitives/Badge";
 import { Button } from "../../components/primitives/Button";
 import { Input } from "../../components/primitives/Input";
 import { employment, technologies } from "../consts";
@@ -87,7 +88,7 @@ export default function Index() {
 
       <div className="my-4 flex flex-col gap-x-4 gap-y-4 md:flex-row  md:gap-x-6 lg:my-8 lg:gap-x-8 xl:my-10 xl:gap-x-10">
         <section className="max-h-fit">
-          <div className="border bg-orange-primary p-4 md:p-6 lg:p-8 xl:p-10">
+          <div className="bg-orange-primary border p-4 md:p-6 lg:p-8 xl:p-10">
             <div className="flex flex-col items-end gap-1">
               <Input
                 label="Minimum salary"
@@ -99,7 +100,7 @@ export default function Index() {
                 id="employment"
                 name="employment"
                 onChange={(e) => setEmp(e.target.value)}
-                className="bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white"
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               >
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -108,7 +109,7 @@ export default function Index() {
                 id="technology"
                 name="technology"
                 onChange={(e) => setTech(e.target.value)}
-                className="bg-gray-50 border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-full rounded-lg border p-2.5 text-sm dark:text-white"
+                className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               >
                 {technologies.map((tech) => {
                   return (
@@ -173,14 +174,7 @@ export default function Index() {
                       <section className="flex flex-col gap-4 sm:flex-row">
                         {vacancy.Tags &&
                           vacancy.Tags.map((tag) => {
-                            return (
-                              <div
-                                key={tag.id}
-                                className="flex flex-row items-center rounded-md bg-orange-primary px-4 py-2"
-                              >
-                                {tag.name}
-                              </div>
-                            );
+                            return <Badge key={tag.id} name={tag.name} />;
                           })}
                       </section>
                       <Link
