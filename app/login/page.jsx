@@ -19,6 +19,12 @@ export default function Login() {
     });
   };
 
+  const onGoogle = async () => {
+    const result = await signIn("google", {
+      callbackUrl: "/",
+    });
+  };
+
   return (
     <>
       <Image
@@ -62,6 +68,9 @@ export default function Login() {
           />
           <Button variant="primary" type="button" onClick={onSubmit}>
             Sign in
+          </Button>
+          <Button variant="transparent" type="button" onClick={onGoogle}>
+            Sign in with Google
           </Button>
           <div className="text-lg">
             Do not have an account yet?{" "}
