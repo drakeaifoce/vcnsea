@@ -34,6 +34,8 @@ export default async function ManageApplicants({ params }) {
     },
   });
 
+  console.log(vacancyWithApplications);
+
   const rejectApplicantAction = async (data) => {
     "use server";
     const application = await prisma.application.update({
@@ -68,7 +70,7 @@ export default async function ManageApplicants({ params }) {
         </Link>
       </div>
       <table className="w-full table-auto text-left text-sm sm:text-base md:text-lg">
-        <thead className="border bg-orange-primary font-medium uppercase">
+        <thead className="bg-orange-primary border font-medium uppercase">
           <tr>
             <th scope="col" className="px-6 py-3">
               Fullname

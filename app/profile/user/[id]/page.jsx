@@ -51,7 +51,7 @@ export default async function UserProfile({ params }) {
           {student.website && (
             <Link
               href={student.website}
-              className="text-sm font-normal text-blue-8 hover:underline md:text-base lg:text-lg"
+              className="text-blue-8 text-sm font-normal hover:underline md:text-base lg:text-lg"
             >
               {student.website}
             </Link>
@@ -59,12 +59,12 @@ export default async function UserProfile({ params }) {
           <address className="text-sm font-normal not-italic md:text-base lg:text-lg">
             {student.email ? student.email : " "}
           </address>
-          <MakeOffer studentId={student.id} />
+          {/* <MakeOffer studentId={student.id} /> */}
         </>
       </div>
       {student.quote && (
         <>
-          <p className="border bg-orange-primary px-6 py-4 text-sm font-normal md:text-base lg:text-lg">
+          <p className="bg-orange-primary border px-6 py-4 text-sm font-normal md:text-base lg:text-lg">
             {student.quote}
           </p>
         </>

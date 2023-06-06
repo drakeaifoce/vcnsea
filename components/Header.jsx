@@ -55,11 +55,23 @@ export const Header = () => {
                 </div>
               )}
               {session.user.Role === "USER" && (
-                <>
+                <div className="flex flex-row gap-4">
                   <Link href="/vacancies" className="hover:underline">
                     Vacancies
                   </Link>
-                </>
+                  <Link
+                    href={`/user/${session.user.id}/applied-vacancies`}
+                    className="hover:underline"
+                  >
+                    Applied
+                  </Link>
+                  <Link
+                    href={`/user/${session.user.id}/interview-appointments`}
+                    className="hover:underline"
+                  >
+                    Interview
+                  </Link>
+                </div>
               )}
             </>
           ) : (
@@ -73,11 +85,11 @@ export const Header = () => {
                 router.push(
                   session.user.Role === "USER"
                     ? `/user/${session.user.id}`
-                    : (session.user.Role === "COMPANY_ADMIN"
+                    : session.user.Role === "COMPANY_ADMIN"
                     ? `/company-admin/${session.user.id}`
                     : session.user.Role === "COMPANY_WORKER"
                     ? `/company/${session.user.companyId}`
-                    : ""),
+                    : "",
                 )
               }
             >
